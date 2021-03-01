@@ -1,9 +1,11 @@
 import React from 'react';
+import Gallery from './components/Gallery.jsx';
+
 
 const App = () => {
   return (
     <div>
-      Hello World!
+      <Gallery />
     </div>
   );
 };
