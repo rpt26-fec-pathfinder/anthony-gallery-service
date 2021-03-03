@@ -3,8 +3,8 @@ const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const fs = require('fs');
 const userRouter = require('./routes/gallery.route');
+const fs = require('fs');
 const { generateData } = require('./data/generateData');
 
 // configs
@@ -16,14 +16,17 @@ app.use(express.static(path.join(__dirname, '../public')));
 // routes
 app.use('/', userRouter);
 
+
+
+
+
 // generate data
 // let data = generateData();
-// fs.writeFile('./server/data/data.txt', JSON.stringify(data), (err, res) => {
+// fs.writeFile('./server/data/data.json', JSON.stringify(data), (err) => {
 //   if (err) {
 //     throw err;
-//   } else {
-//     console.log('data file created!');
 //   }
+//   console.log('data file created!');
 // });
 
 
