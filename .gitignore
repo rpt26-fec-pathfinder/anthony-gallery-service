@@ -27,3 +27,6 @@ dist/
 # configs
 config
 
+#data file
+data
+

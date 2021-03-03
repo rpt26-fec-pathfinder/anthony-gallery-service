@@ -6,11 +6,11 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './server/config/config.env' });
 
 const repoSchema = new Schema({
-  header: [String],
+  page: Number,
+  headerImage: String,
   mainGallery: [String],
-  thumbGallery: [String],
-  moreLikeThis: [String],
-  moreFrom: [String],
+  // thumbGallery: [String],
+  moreLikeThisImages: [String],
 });
 
 module.exports = mongoose.model('images', repoSchema);

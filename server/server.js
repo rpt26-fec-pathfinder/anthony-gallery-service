@@ -3,7 +3,9 @@ const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const fs = require('fs');
 const userRouter = require('./routes/gallery.route');
+const { generateData } = require('./data/generateData');
 
 // configs
 dotenv.config({ path: './server/config/config.env' });
@@ -13,6 +15,16 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // routes
 app.use('/', userRouter);
+
+// generate data
+// let data = generateData();
+// fs.writeFile('./server/data/data.txt', JSON.stringify(data), (err, res) => {
+//   if (err) {
+//     throw err;
+//   } else {
+//     console.log('data file created!');
+//   }
+// });
 
 
 // MongoDB and Server Connections
