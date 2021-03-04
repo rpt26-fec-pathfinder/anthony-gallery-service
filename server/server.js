@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const userRouter = require('./routes/gallery.route');
 const fs = require('fs');
-const { generateData } = require('./data/generateData');
+const { seedingScript } = require('./data/seedingScript');
 
 // configs
 dotenv.config({ path: './server/config/config.env' });
@@ -20,8 +20,8 @@ app.use('/', userRouter);
 
 
 
-// generate data
-// let data = generateData();
+// // generate data
+// let data = seedingScript();
 // fs.writeFile('./server/data/data.json', JSON.stringify(data), (err) => {
 //   if (err) {
 //     throw err;
@@ -32,7 +32,6 @@ app.use('/', userRouter);
 
 // MongoDB and Server Connections
 const PORT = process.env.PORT || 4012;
-
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(app.listen(PORT, () => console.log(`Listening on PORT ${PORT} 👍!`)))
   .catch(() => console.error('Something went wrong!!'));
