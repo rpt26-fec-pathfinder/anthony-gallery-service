@@ -1,4 +1,4 @@
-const Model = require('../models/gallery.model');
+const Model = require('../db-models/gallery.model');
 
 exports.getGallery = (req, res) => {
   // let test = new Model;
