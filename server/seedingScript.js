@@ -71,7 +71,7 @@ fs.writeFile(__dirname + '/data/data.json', JSON.stringify(data), (err) => {
             moreLikeThisImages: item.moreLikeThisImages
           })
             .then(() => console.log(`Page ${item.page} saved!`))
-            .catch(() => console.error('error, NOT saved!'));
+            .catch(() => console.error(`Error Page ${item.page}, NOT saved!`));
         }
       }
     });

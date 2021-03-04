@@ -18,24 +18,7 @@ app.use(express.json());
 // routes
 app.use('/', userRouter);
 
-
-
-
-
-// // generate data
-// let data = seedingScript();
-// fs.writeFile('./server/data/data.json', JSON.stringify(data), (err) => {
-//   if (err) {
-//     throw err;
-//   }
-//   console.log('data file created!');
-// });
-
-
-// MongoDB and Server Connections
+// server connection
 const PORT = process.env.PORT || 4012;
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT} 👍!`));
-// mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
-// .then(app.listen(PORT, () => console.log(`Listening on PORT ${PORT} 👍!`)))
-// .catch(() => console.error('Something went wrong!!'));
 
