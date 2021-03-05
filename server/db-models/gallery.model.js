@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const dotenv = require('dotenv');
-
-// config secret files
-dotenv.config({ path: './server/config/config.env' });
+dotenv.config({ path: 'config/config.env' });
 
 
 // mongoose connection

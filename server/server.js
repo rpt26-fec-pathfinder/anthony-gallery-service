@@ -6,7 +6,7 @@ const fs = require('fs');
 
 // configs
 const dotenv = require('dotenv');
-dotenv.config({ path: './server/config/config.env' });
+dotenv.config({ path: 'config/config.env' });
 
 // shows static files react index.html
 app.use(express.static(path.join(__dirname, '../public')));
@@ -20,5 +20,7 @@ app.use('/', userRouter);
 
 // server connection
 const PORT = process.env.PORT || 4012;
-app.listen(PORT, () => console.log(`Listening on PORT ${PORT} 👍!`));
+app.listen(PORT, () => {
+  console.log(`Listening on PORT ${PORT} 👍!`);
+});
 

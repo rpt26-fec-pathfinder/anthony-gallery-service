@@ -1,4 +1,4 @@
-const Image = require('./db-models/gallery.model');
+const Image = require('../server/db-models/gallery.model');
 const fs = require('fs');
 
 // a function written to created all the aws s3 urls that needs to be added to mongoDB.
@@ -60,7 +60,7 @@ const generateData = function () {
 
 // // creates json file and saves data to mongodb.
 let data = generateData();
-fs.writeFile(__dirname + '/data/data.json', JSON.stringify(data), (err) => {
+fs.writeFile(__dirname + '/data.json', JSON.stringify(data), (err) => {
   if (err) {
     throw err;
   }
@@ -91,5 +91,5 @@ fs.writeFile(__dirname + '/data/data.json', JSON.stringify(data), (err) => {
   }
 });
 
-//
+
 // generateData()
