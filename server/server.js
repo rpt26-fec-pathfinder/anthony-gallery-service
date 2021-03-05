@@ -1,18 +1,18 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const dotenv = require('dotenv');
-// const mongoose = require('mongoose');
 const userRouter = require('./routes/gallery.route');
 const fs = require('fs');
-// const { seedingScript } = require('./data/seedingScript');
 
 // configs
+const dotenv = require('dotenv');
 dotenv.config({ path: './server/config/config.env' });
 
 // shows static files react index.html
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.urlencoded({ extended: true }));
+
+// middleware for data sent to database
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // routes

@@ -1,16 +1,26 @@
 const Model = require('../db-models/gallery.model');
 
 exports.getGallery = (req, res) => {
-  // let test = new Model;
-  console.log('Gallery');
-  res.end();
+  Model.find({ page: req.params.page }, (err, data) => {
+    if (err) {
+      throw err;
+
+    } else {
+      if (data.length === 0) {
+        res.json({ message: `Page ${req.params.page} does NOT exist!` });
+
+      } else {
+        res.json(data);
+      }
+    }
+  });
 };
 
 
-// exports.getHeader = (req, res) => {
-//   console.log('Header');
-//   res.end();
-// };
+exports.getHeader = (req, res) => {
+  console.log('Header');
+  res.end();
+};
 
 // exports.getMoreLikeThis = (req, res) => {
 //   console.log('More Like This');

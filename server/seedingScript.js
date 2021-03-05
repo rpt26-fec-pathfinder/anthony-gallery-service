@@ -15,24 +15,38 @@ const generateData = function () {
     };
 
     obj.page = page;
+
     // headers
-    obj.headerImage = `https://steam-fec.s3.amazonaws.com/steam${page}/header-1.jpg`;
+    obj.headerImage = `https://steam-fec.s3.amazonaws.com/steam${page}/header-${page}.jpg`;
 
     // main images
     for (let main = 1; main < 11; main++) {
       obj.mainImages.push(
-        `https://steam-fec.s3.amazonaws.com/steam${page}/main-${main}.jpg`
+        {
+          main: `https://steam-fec.s3.amazonaws.com/steam${page}/main-${page}-${main}.jpg`,
+          thumb: `https://steam-fec.s3.amazonaws.com/steam${page}/thumb-${page}-${main}.jpg`
+        }
       );
     }
 
     // more like this images
-    for (let set = 1; set < 11; set++) {
-      let arr = [];
-      let len = 4;
+    let setLen = 11;
 
-      for (let pic = 1; pic <= len; pic++) {
+    if (page !== 1) {
+      setLen = 4;
+    }
+
+    for (let set = 1; set < setLen; set++) {
+      let arr = [];
+      let picLen = 4;
+
+      if (page !== 1) {
+        picLen = 3;
+      }
+
+      for (let pic = 1; pic <= picLen; pic++) {
         arr.push(
-          `https://steam-fec.s3.amazonaws.com/steam${page}/morelikethis-${set}-${pic}.jpg`
+          `https://steam-fec.s3.amazonaws.com/steam${page}/morelikethis-${page}-${set}-${pic}.jpg`
         );
       }
       obj.moreLikeThisImages.push(arr);
@@ -44,8 +58,7 @@ const generateData = function () {
   return results;
 };
 
-// // generate data
-// run node server/seedingScript in terminal to generate json data!!!!
+// // creates json file and saves data to mongodb.
 let data = generateData();
 fs.writeFile(__dirname + '/data/data.json', JSON.stringify(data), (err) => {
   if (err) {
@@ -54,7 +67,6 @@ fs.writeFile(__dirname + '/data/data.json', JSON.stringify(data), (err) => {
   console.log('data json file has been created!');
 
   for (let item of data) {
-    let dataList = [];
     Image.findOne({ page: item.page }, (err, page) => {
       if (err) {
         throw err;
@@ -64,6 +76,7 @@ fs.writeFile(__dirname + '/data/data.json', JSON.stringify(data), (err) => {
           console.log(`${page} is already in the database!`);
 
         } else {
+          console.log('look at me', item.mainImages.main);
           Image.insertMany({
             page: item.page,
             headerImage: item.headerImage,
@@ -78,3 +91,5 @@ fs.writeFile(__dirname + '/data/data.json', JSON.stringify(data), (err) => {
   }
 });
 
+//
+// generateData()

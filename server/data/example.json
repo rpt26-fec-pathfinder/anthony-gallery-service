@@ -3,16 +3,46 @@
     "page": 1,
     "headerImg": "header-1.jpg",
     "mainImg": [
-      "https://steam-fec.s3.amazonaws.com/steam1/main-1.jpg",
-      "https://steam-fec.s3.amazonaws.com/steam1/main-2.jpg",
-      "https://steam-fec.s3.amazonaws.com/steam1/main-3.jpg",
-      "https://steam-fec.s3.amazonaws.com/steam1/main-4.jpg",
-      "https://steam-fec.s3.amazonaws.com/steam1/main-5.jpg",
-      "https://steam-fec.s3.amazonaws.com/steam1/main-6.jpg",
-      "https://steam-fec.s3.amazonaws.com/steam1/main-7.jpg",
-      "https://steam-fec.s3.amazonaws.com/steam1/main-8.jpg",
-      "https://steam-fec.s3.amazonaws.com/steam1/main-9.jpg",
-      "https://steam-fec.s3.amazonaws.com/steam1/main-10.jpg"
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-1.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-1.jpg"
+      },
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-2.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-2.jpg"
+      },
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-3.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-3.jpg"
+      },
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-4.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-4.jpg"
+      },
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-5.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-5.jpg"
+      },
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-6.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-6.jpg"
+      },
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-7.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-7.jpg"
+      },
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-8.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-8.jpg"
+      },
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-9.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-9.jpg"
+      },
+      {
+        "main": "https://steam-fec.s3.amazonaws.com/steam1/main-10.jpg",
+        "thumb": "https://steam-fec.s3.amazonaws.com/steam1/thumb-10.jpg"
+      }
     ],
     "moreLikeThisImages": [
       [

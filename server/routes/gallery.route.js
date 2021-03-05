@@ -3,7 +3,7 @@ const router = express.Router();
 const { getGallery, getHeader, getMoreLikeThis } = require('../controllers/gallery.controller');
 
 // get main galleryimages
-router.get('/steam/gallery/:id', getGallery);
+router.get('/steam/gallery/:page', getGallery);
 
 
 
