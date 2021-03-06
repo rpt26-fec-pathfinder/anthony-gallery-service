@@ -1,4 +1,6 @@
-// use this to place image files in the "image" folder to auto upload to AWS S3 bucket.
+// if you have images in the images folder than use this to place all images to aws s3 bucket.
+// you may have to specify the bucket name if you already have one, this generates a unique bucketname.
+
 const AWS = require('aws-sdk');
 const uuid = require('uuid');
 const fs = require('fs');

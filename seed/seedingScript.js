@@ -1,7 +1,7 @@
 const Image = require('../server/db-models/gallery.model');
 const fs = require('fs');
 
-// a function written to created all the aws s3 urls that needs to be added to mongoDB.
+// creates all the aws s3 urls that needs to be added to mongoDB.
 const generateData = function (pages = 5) {
   let results = [];
 
@@ -35,7 +35,7 @@ const generateData = function (pages = 5) {
       );
     }
 
-    // more like this images
+    // more-like-this images
     let setLen = 11;
 
     if (page !== 1) {
