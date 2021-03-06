@@ -2,11 +2,11 @@ const Image = require('../server/db-models/gallery.model');
 const fs = require('fs');
 
 // a function written to created all the aws s3 urls that needs to be added to mongoDB.
-const generateData = function () {
+const generateData = function (pages = 5) {
   let results = [];
 
   // pages
-  for (let page = 1; page < 3; page++) {
+  for (let page = 1; page <= pages; page++) {
     let obj = {
       page: null,
       headerImage: '',
@@ -20,7 +20,13 @@ const generateData = function () {
     obj.headerImage = `https://steam-fec.s3.amazonaws.com/steam${page}/header-${page}.jpg`;
 
     // main images
-    for (let main = 1; main < 11; main++) {
+    let mainLen = 11;
+
+    if (page !== 1) {
+      mainLen = 5;
+    }
+
+    for (let main = 1; main <= mainLen; main++) {
       obj.mainImages.push(
         {
           main: `https://steam-fec.s3.amazonaws.com/steam${page}/main-${page}-${main}.jpg`,
@@ -33,10 +39,10 @@ const generateData = function () {
     let setLen = 11;
 
     if (page !== 1) {
-      setLen = 4;
+      setLen = 3;
     }
 
-    for (let set = 1; set < setLen; set++) {
+    for (let set = 0; set < setLen; set++) {
       let arr = [];
       let picLen = 4;
 
@@ -58,7 +64,7 @@ const generateData = function () {
   return results;
 };
 
-// // creates json file and saves data to mongodb.
+// creates json file and saves data to mongodb.
 let data = generateData();
 fs.writeFile(__dirname + '/data.json', JSON.stringify(data), (err) => {
   if (err) {
@@ -76,7 +82,6 @@ fs.writeFile(__dirname + '/data.json', JSON.stringify(data), (err) => {
           console.log(`${page} is already in the database!`);
 
         } else {
-          console.log('look at me', item.mainImages.main);
           Image.insertMany({
             page: item.page,
             headerImage: item.headerImage,

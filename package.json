@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node ./server/server",
     "build": "webpack",
-    "seed": "node server/seedingScript",
+    "seed": "node seed/seedingScript",
+    "aws": "node seeding/awsS3",
     "react-dev": "webpack serve --mode development --open --hot",
     "server-dev": "nodemon ./server/server",
     "dev": "concurrently \"npm run server-dev\" \"npm run react-dev\""
