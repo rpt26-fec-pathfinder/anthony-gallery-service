@@ -1,5 +1,4 @@
-// Don't use, I tried to mess aronud with aws sdk trying to get it to work....no bueno.
-// Only loads a single file at a time?! Tried to load multiple files, but it kept blowing up and ran out of time.
+// use this to place image files in the "image" folder to auto upload to AWS S3 bucket.
 
 const AWS = require('aws-sdk');
 const uuid = require('uuid');
