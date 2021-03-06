@@ -1,12 +1,21 @@
 const Image = require('../server/db-models/gallery.model');
 const fs = require('fs');
+const { randomPageSelector } = require('./randomPageSelector');
 
 // creates all the aws s3 urls that needs to be added to mongoDB.
-const generateData = function (pages = 5) {
+const generateData = function () {
   let results = [];
 
+
   // pages
-  for (let page = 1; page <= pages; page++) {
+  for (let page = 1; page <= 100; page++) {
+    let randomPage = 0;
+
+    // comment this out if you ever put in real legit photos for pages 5 through 100
+    if (page > 5 && page <= 100) {
+      randomPage = randomPageSelector();
+    }
+
     let obj = {
       page: null,
       headerImage: '',
@@ -17,20 +26,21 @@ const generateData = function (pages = 5) {
     obj.page = page;
 
     // headers
-    obj.headerImage = `https://steam-fec.s3.amazonaws.com/steam${page}/header-${page}.jpg`;
+    obj.headerImage = `https://steam-fec.s3.amazonaws.com/steam${randomPage || page}/header-${randomPage || page}.jpg`;
 
     // main images
     let mainLen = 11;
 
     if (page !== 1) {
       mainLen = 5;
+
     }
 
     for (let main = 1; main <= mainLen; main++) {
       obj.mainImages.push(
         {
-          main: `https://steam-fec.s3.amazonaws.com/steam${page}/main-${page}-${main}.jpg`,
-          thumb: `https://steam-fec.s3.amazonaws.com/steam${page}/thumb-${page}-${main}.jpg`
+          main: `https://steam-fec.s3.amazonaws.com/steam${randomPage || page}/main-${randomPage || page}-${main}.jpg`,
+          thumb: `https://steam-fec.s3.amazonaws.com/steam${randomPage || page}/thumb-${randomPage || page}-${main}.jpg`
         }
       );
     }
@@ -52,7 +62,7 @@ const generateData = function (pages = 5) {
 
       for (let pic = 1; pic <= picLen; pic++) {
         arr.push(
-          `https://steam-fec.s3.amazonaws.com/steam${page}/morelikethis-${page}-${set}-${pic}.jpg`
+          `https://steam-fec.s3.amazonaws.com/steam${randomPage || page}/morelikethis-${randomPage || page}-${set}-${pic}.jpg`
         );
       }
       obj.moreLikeThisImages.push(arr);
@@ -63,6 +73,7 @@ const generateData = function (pages = 5) {
 
   return results;
 };
+
 
 // creates json file and saves data to mongodb.
 let data = generateData();
