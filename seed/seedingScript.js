@@ -97,4 +97,4 @@ fs.writeFile(__dirname + '/data.json', JSON.stringify(data), (err) => {
 });
 
 
-// generateData()
+generateData();
