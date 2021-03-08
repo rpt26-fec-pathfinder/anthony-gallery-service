@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getGallery, getHeader, getMoreLikeThis } = require('../controllers/gallery.controller');
+const { getGallery, getHeader, getMoreLikeThis } = require('../controllers/controller');
 
 // get main galleryimages
 router.get('/steam/gallery/:page', getGallery);

@@ -16,11 +16,11 @@ mongoose.connect(process.env.MONGO_URI, {
 
 
 // schema/model for mongo.
-const repoSchema = new Schema({
+const imagesSchema = new Schema({
   page: String,
   headerImage: String,
   mainImages: [{ main: String, thumb: String }],
   moreLikeThisImages: [Array],
 });
 
-module.exports = mongoose.model('images', repoSchema);
+module.exports = mongoose.model('images', imagesSchema);

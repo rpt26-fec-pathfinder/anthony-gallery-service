@@ -1,4 +1,4 @@
-const Image = require('../server/db-models/gallery.model');
+const Image = require('../server/db-models/database');
 const fs = require('fs');
 const { randomPageSelector } = require('./randomPageSelector');
 

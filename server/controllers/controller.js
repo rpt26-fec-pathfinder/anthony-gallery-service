@@ -1,4 +1,4 @@
-const Model = require('../db-models/gallery.model');
+const Model = require('../db-models/database');
 
 exports.getGallery = (req, res) => {
   Model.find({ page: req.params.page }, (err, data) => {
