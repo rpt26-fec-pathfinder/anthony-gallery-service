@@ -6,7 +6,6 @@ const { randomPageSelector } = require('./randomPageSelector');
 const generateData = function () {
   let results = [];
 
-
   // pages
   for (let page = 1; page <= 100; page++) {
     let randomPage = 0;
@@ -33,7 +32,6 @@ const generateData = function () {
 
     if (page !== 1) {
       mainLen = 5;
-
     }
 
     for (let main = 1; main <= mainLen; main++) {
@@ -108,4 +106,4 @@ fs.writeFile(__dirname + '/data.json', JSON.stringify(data), (err) => {
 });
 
 
-generateData();
+// generateData();
