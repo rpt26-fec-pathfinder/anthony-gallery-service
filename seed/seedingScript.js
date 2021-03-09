@@ -105,5 +105,6 @@ fs.writeFile(__dirname + '/data.json', JSON.stringify(data), (err) => {
   }
 });
 
+// exported out for mocha/chai test to access
+module.exports = generateData;
 
-// generateData();

@@ -1,5 +1,4 @@
 import React from 'react';
-import main from '../images/ageofempires-main-5.jpg';
 
 
 const Gallery = () => {
