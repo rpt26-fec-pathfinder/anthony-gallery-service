@@ -20,7 +20,5 @@ app.use('/', userRouter);
 
 // server connection
 const PORT = process.env.PORT || 4012;
-app.listen(PORT, () => {
-  console.log(`Listening on PORT ${PORT} 👍!`);
-});
+app.listen(PORT, () => console.log(`Listening on PORT ${PORT} 👍!`));
 

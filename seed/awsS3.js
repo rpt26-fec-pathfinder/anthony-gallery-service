@@ -22,6 +22,7 @@ const s3 = new AWS.S3({
 
 // creates a unique bucketname
 const bucketName = 'steam-' + uuid.v4();
+// const bucketName = 'steam-fec/test'
 
 // creates a bucket
 s3.createBucket({ Bucket: bucketName }, function (err, data) {
