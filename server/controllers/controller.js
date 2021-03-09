@@ -7,7 +7,7 @@ exports.getGallery = (req, res) => {
 
     } else {
       if (data.length === 0) {
-        res.json({ message: `Page ${req.params.page} does NOT exist!` });
+        res.status(404).send(`*** Page ${req.params.page} not found! ***`);
 
       } else {
         res.json(data);

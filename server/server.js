@@ -22,3 +22,5 @@ app.use('/', userRouter);
 const PORT = process.env.PORT || 4012;
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT} 👍!`));
 
+// exported out for mocha/chai test to access
+module.exports = app;
