@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node ./server/server",
-    "build": "webpack",
+    "build": "webpack --mode development",
     "seed-script": "node seed/seedingScript",
     "seed-aws": "node seed/awsS3",
     "react-dev": "webpack serve --mode development --open --hot",
