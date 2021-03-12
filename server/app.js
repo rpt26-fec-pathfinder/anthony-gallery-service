@@ -13,9 +13,5 @@ app.use(express.json());
 // routes
 app.use('/', userRouter);
 
-app.get("/test", async (req, res) => {
-  res.json({ message: "pass!" });
-});
-
 // exported out for mocha/chai test to access
 module.exports = app;
