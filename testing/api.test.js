@@ -24,7 +24,6 @@ describe('GET REQUEST FOR images from page ranging 1 through 100!!!!!!', () => {
 describe('GET REQUEST from pages less than greater than 100 do NOT exist!!!', () => {
 
   test("a. Test should return a 404", async (done) => {
-
     const randomPage = Math.floor(Math.random() * (901) + 101);
     const res = await request.get(`/images/${randomPage}`);
 
