@@ -19,13 +19,6 @@ dotenv.config({ path: 'config/config.env' });
 // // routes
 // app.use('/', userRouter);
 
-app.get("/test", async (req, res) => {
-  res.json({ message: "pass!" });
-});
-
 // server connection
 const PORT = process.env.PORT || 4012;
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT} 👍!`));
-
-
-
