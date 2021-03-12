@@ -6,9 +6,9 @@ const Gallery = () => {
   return (
     <div id="gallery">
       <h1 id="title">Age of Empires II: Definitive Edition</h1>
-      <div id="main"><img src={main} alt="main image" /></div>
+      <div id="main"><img src="" alt="main image" /></div>
 
-      <div class="scroll">
+      <div className="scroll">
         <div className="item">item1</div>
         <div className="item">item2</div>
         <div className="item">item3</div>

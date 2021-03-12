@@ -120,7 +120,7 @@ div.scroll {
   width: 40px;
   border-radius: 5px;
   background-color: #354142;
-  background-image: url(data:images/leftArrow.png);
+  /* background-image: url(data:images/leftArrow.png); */
 }
 
 ::-webkit-scrollbar-button:start:decrement:hover {
@@ -129,7 +129,7 @@ div.scroll {
 
 
 ::-webkit-scrollbar-button:end:increment {
-    background-image: url(data:images/rightArrow.png);
+    /* background-image: url(data:images/rightArrow.png); */
 }
 
 
