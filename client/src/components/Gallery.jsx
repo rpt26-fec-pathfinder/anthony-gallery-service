@@ -5,12 +5,12 @@ import '../styling/Gallery.css';
 
 
 const Gallery = () => {
+  // update state to api calls afterwards
   const [state, setState] = useState({
     images: [],
     title: 'Age of Empires II: Definitive Edition'
   })
 
-  // "componentDidMounts" to page 1 upon page initially loading
   useEffect(async () => {
     const res = await axios.get('/images/1');
     setState({ images: [res.data] })
@@ -21,10 +21,6 @@ const Gallery = () => {
     < div id="gallery" >
       <h1 id="title">{state.title}</h1>
       <HubButton />
-      {/* <a id="community-hub">Community Hub</a>
-      <br />
-      <br />
-      <br /> */}
       <div id="main"><img src="" alt="main image" /></div>
       <div className="scroll">
         <div className="item">item1</div>
