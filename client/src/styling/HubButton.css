@@ -1,0 +1,15 @@
+#community-hub {
+  margin-right: 175px;
+  float: right;
+  padding: 8px 25px;
+  font-size: 14px;
+  color: #94c6e2;
+  background-color:#305d8a;
+  border-radius: 3px;;
+}
+
+#community-hub:hover {
+  cursor: pointer;
+  color: white;
+  background-color:#72a3d4;
+}
