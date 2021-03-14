@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import HubButton from './HubButton.jsx';
 import '../styling/Gallery.css';
 
 
@@ -19,10 +20,11 @@ const Gallery = () => {
   return (
     < div id="gallery" >
       <h1 id="title">{state.title}</h1>
-      <a id="community-hub">Community Hub</a>
+      <HubButton />
+      {/* <a id="community-hub">Community Hub</a>
       <br />
       <br />
-      <br />
+      <br /> */}
       <div id="main"><img src="" alt="main image" /></div>
       <div className="scroll">
         <div className="item">item1</div>
