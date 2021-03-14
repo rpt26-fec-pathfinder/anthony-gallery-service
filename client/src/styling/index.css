@@ -4,12 +4,5 @@
   padding: 0px;
 }
 
-#content {
-  background-image: url('https://steam-fec.s3.amazonaws.com/images/background.jpg');
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-  font-family: 'Yantramanav', sans-serif;
-}
+
 
