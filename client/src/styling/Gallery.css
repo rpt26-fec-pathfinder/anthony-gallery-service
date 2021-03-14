@@ -1,26 +1,16 @@
-/* get rid of all margins and padding on site */
-* {
-  margin: 0px;
-  padding: 0px;
-}
-
-#content {
-  background-image: url('https://steam-fec.s3.amazonaws.com/images/background.jpg');
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-  font-family: 'Yantramanav', sans-serif;
-}
 
 /* everything on the service */
 #gallery {
   font-family: 'Noto Sans', sans-serif;
+  margin-left: 175px;
 }
 
 /* title on top */
 #title {
+  position: absolute;
   font-size: 26px;
+  color: white;
+
 }
 
 /* The main image that is being displayed */
@@ -62,8 +52,6 @@
   background-color: #3d6c8d;
   cursor: pointer;
 } */
-
-
 
 div.scroll {
   display: inline;
@@ -138,8 +126,23 @@ div.scroll {
 }
 
 
-::-webkit-scrollbar-button:end:increment {
-    /* background-image: url(data:images/rightArrow.png); */
+/* ::-webkit-scrollbar-button:end:increment {
+    background-image: url(data:images/rightArrow.png);
+} */
+
+
+#community-hub {
+  margin-right: 175px;
+  float: right;
+  padding: 8px 25px;
+  font-size: 14px;
+  color: #94c6e2;
+  background-color:#305d8a;
+  border-radius: 3px;;
 }
 
-
+#community-hub:hover {
+  cursor: pointer;
+  color: white;
+  background-color:#72a3d4;
+}

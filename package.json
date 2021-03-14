@@ -39,6 +39,7 @@
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.8",
     "@babel/preset-react": "^7.12.13",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",

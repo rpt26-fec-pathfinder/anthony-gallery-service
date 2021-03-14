@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../styling/Gallery.css';
 
 
 const Gallery = () => {
+  const [state, setState] = useState({
+    images: [],
+    title: 'Age of Empires II: Definitive Edition'
+  })
+
+  // "componentDidMounts" to page 1 upon page initially loading
+  useEffect(async () => {
+    const res = await axios.get('/images/1');
+    setState({ images: [res.data] })
+    console.log(res.data);
+  }, [])
 
   return (
-    <div id="gallery">
-      <h1 id="title">Age of Empires II: Definitive Edition</h1>
+    < div id="gallery" >
+      <h1 id="title">{state.title}</h1>
+      <a id="community-hub">Community Hub</a>
+      <br />
+      <br />
+      <br />
       <div id="main"><img src="" alt="main image" /></div>
-
       <div className="scroll">
         <div className="item">item1</div>
         <div className="item">item2</div>
@@ -19,21 +35,10 @@ const Gallery = () => {
         <div className="item">item8</div>
         <div className="item">item9</div>
         <div className="item">item10</div>
-        <div className="item">item11</div>
-        <div className="item">item12</div>
-        <div className="item">item13</div>
-        <div className="item">item14</div>
-        <div className="item">item15</div>
-        <div className="item">item16</div>
-        <div className="item">item17</div>
-        <div className="item">item18</div>
-        <div className="item">item19</div>
-        <div className="item">item20</div>
       </div>
-
       <div>
       </div>
-    </div>
+    </div >
   );
 };
 
