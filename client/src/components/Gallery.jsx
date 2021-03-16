@@ -5,26 +5,45 @@ import '../styling/Gallery.css';
 
 
 const Gallery = () => {
-  // update state to api calls afterwards
-  // const [state, setState] = useState({
-  //   images: [],
-  //   title: 'Age of Empires II: Definitive Edition'
-  // })
   const [state, setState] = useState({
+    title: 'Age of Empires II: Definitive Edition',
     main: [],
     thumb: [],
-    title: 'Age of Empires II: Definitive Edition'
   })
 
   useEffect(async () => {
-    const res = await axios.get('/images/1');
-    setState({ main: [res.data] })
-    // console.log(res.data);
+    const res = await axios.get(`http://localhost:4012/images${window.location.pathname}`);
+    let main = res.data[0].mainImages.map(item => item.main)
+    let thumb = res.data[0].mainImages.map(item => item.thumb)
+
+    setState(() => {
+      return {
+        ...state,
+        main,
+        thumb,
+      }
+    })
   }, [])
 
   const slidesOptions = {
     width: "52.5%"
   }
+  console.log(state)
+
+  let mainCount = 0;
+  let mainImages = state.main.map(image => {
+    return <div key={mainCount += 1} className="mySlides" style={{ display: 'none' }}>
+      <div className="numbertext">testing</div>
+      <img src={image} style={slidesOptions} alt="main image" />
+    </div>
+  })
+
+  let thumbCount = 0;
+  let thumbImages = state.thumb.map(image => {
+    return <div key={thumbCount += 1} className="column">
+      <img className="demo cursor" src={image} alt="thumb image" />
+    </div>
+  })
 
   return (
     < div id="gallery" >
@@ -45,12 +64,16 @@ const Gallery = () => {
       </div> */}
 
       <div className="container">
+
         <div className="mySlides" style={{ display: 'block' }}>
           <div className="numbertext">testing</div>
-          <img src={"https://steam-fec.s3.amazonaws.com/steam2/main-2-1.jpg"} style={slidesOptions} alt="main image 1" />
+          {/* erase this later */}
+          <img src={state.main[0]} style={slidesOptions} alt="main image 1" />
         </div>
 
-        <div className="mySlides" style={{ display: 'none' }}>
+        {mainImages}
+
+        {/* <div className="mySlides" style={{ display: 'none' }}>
           <div className="numbertext">2 / 5</div>
           <img src={"https://steam-fec.s3.amazonaws.com/steam2/main-2-2.jpg"} style={slidesOptions} alt="main image 2" />
         </div>
@@ -68,14 +91,16 @@ const Gallery = () => {
         <div className="mySlides" style={{ display: 'none' }}>
           <div className="numbertext">5 / 5</div>
           <img src={"https://steam-fec.s3.amazonaws.com/steam2/main-2-5.jpg"} style={slidesOptions} alt="main image 5" />
-        </div>
+        </div> */}
 
         {/* nav arrows */}
         <a className="prev" >{String.fromCharCode(10094)}</a>
         <a className="next" >{String.fromCharCode(10095)}</a>
 
         <div className="row">
-          <div className="column">
+
+          {thumbImages}
+          {/* <div className="column">
             <img className="demo cursor" src={"https://steam-fec.s3.amazonaws.com/steam2/thumb-2-1.jpg"} alt="thumb image 1" />
           </div>
 
@@ -97,7 +122,8 @@ const Gallery = () => {
 
           <div className="column">
             <img className="demo cursor" src={"https://steam-fec.s3.amazonaws.com/steam2/thumb-2-5.jpg"} alt="thumb image 5" />
-          </div>
+          </div> */}
+
 
           {/* end of row & container div */}
         </div>
@@ -113,3 +139,7 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
+// title: 'Age of Empires II: Definitive Edition',
+// main: ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"],
+// thumb: ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"],

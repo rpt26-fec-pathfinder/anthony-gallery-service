@@ -6,11 +6,4 @@ const { getGallery, getHeader, getMoreLikeThis } = require('../controllers/contr
 router.get('/images/:page', getGallery);
 
 
-
-// // get headers for Ryan
-// router.get('/steam/header/:id', getHeader);
-
-// // get more this for Calvin
-// router.get('/steam/morelikethis/:id', getMoreLikeThis);
-
 module.exports = router;
