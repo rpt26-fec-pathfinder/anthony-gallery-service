@@ -13,11 +13,12 @@ const Gallery = () => {
     // main: [],
     // thumb: [],
     title: 'Age of Empires II: Definitive Edition',
-    idx: 0,
+    idx: -1,
     preSelectedImage: null,
     main: ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"],
     thumb: ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"],
   })
+
 
   useEffect(async () => {
     //   const res = await axios.get(`http://localhost:4012/images${window.location.pathname}`);
@@ -37,13 +38,14 @@ const Gallery = () => {
 
   // auto image change
   function timer() {
-    setTimeout(timer, 5000)
     setState((prevState) => {
       return {
         ...state,
-        idx: prevState.idx + 1 < state.main.length ? prevState.idx + 1 : 0
+        idx: prevState.idx < state.main.length - 1 ? prevState.idx + 1 : 0,
       }
     })
+
+    setTimeout(timer, 5000)
   };
 
   // func renders when thumb is clicked
@@ -112,7 +114,6 @@ const Gallery = () => {
 export default Gallery;
 
 // TODO LIST
+// modal where you can click left and right...also stops timer, timer initiates again when out of modal mode
 // timer every 4 to 5 seconds change photos
 // triange on top of border
-// modal where you can click left and right...also stops timer, timer initiates again when out of modal mode
-// left and right clicker on side of main image
