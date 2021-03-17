@@ -19,6 +19,7 @@
 
 .cursor {
   cursor: pointer;
+  margin-bottom: -4px;
 }
 
 .prev,
@@ -81,8 +82,10 @@
 .column {
   float: left;
   width: 120px;
-  padding: 2px;
+  padding: 1px;
+  margin-bottom: 5px;
 }
+
 
 ::-webkit-scrollbar {
   height: 18px;
