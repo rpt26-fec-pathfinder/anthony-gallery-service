@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import HubButton from './HubButton.jsx';
 import '../styling/Gallery.css';
 import axios from 'axios';
+import { motion, AnimatePresence } from "framer-motion";
 
 
 const Gallery = () => {
   const [state, setState] = useState({
     // title: 'Age of Empires II: Definitive Edition',
     // idx: 0,
+    // preSelectedImage: null,
     // main: [],
     // thumb: [],
-
     title: 'Age of Empires II: Definitive Edition',
     idx: 0,
+    preSelectedImage: null,
     main: ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"],
     thumb: ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"],
   })
@@ -29,70 +31,58 @@ const Gallery = () => {
     //       thumb,
     //     }
     //   })
+
+    timer();
   }, [])
 
-  // thumb styling
-  const thumbStyleOptions = {
-    border: '1px solid #c4c2bb',
-  }
-
+  // auto image change
+  function timer() {
+    setTimeout(timer, 5000)
+    setState((prevState) => {
+      return {
+        ...state,
+        idx: prevState.idx + 1 < state.main.length ? prevState.idx + 1 : 0
+      }
+    })
+  };
 
   // func renders when thumb is clicked
-  function selectSlide(n) {
+  function selectedSlide(e, index) {
+    e.preventDefault();
+
+    state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
+    e.target.classList.add('active')
+
     setState(() => {
       return {
         ...state,
-        idx: n
+        idx: index,
+        preSelectedImage: e.target,
       }
     })
-    // console.log(state.main[n])
   }
 
-  // // func renders the mainImage on screen
-  // function currentSlide(n = 0) {
-  //   let results = state.main.map((image, index) => {
-  //     if (index === n) {
-  //       return <div key={index} className="mySlides" style={{ display: 'block' }}>
-  //         <img src={image} style={{ width: '52.5%' }} alt="main image" />
-  //       </div>
 
-  //     } else {
-  //       return <div key={index} className="mySlides" style={{ display: 'none' }}>
-  //         <img src={image} style={{ width: '52.5%' }} alt="main image" />
-  //       </div>
-  //     }
-  //   })
-  //   return results;
-  // }
-
-  // let bigImage = currentSlide();
+  // modal
+  function modal() {
+    console.log('modal open!')
+  }
 
   return (
     < div id="gallery" >
       <h1 id="title">{state.title}</h1>
+      {/* Comm Hub */}
       <HubButton />
-
+      <br />
       {/* main images */}
       <div className="container">
-
-        {<div className="mySlides" style={{ display: 'block' }}>
-          <img src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
-        </div>}
-
-        {state.main.map((image, index) => {
-          if (index === 0) {
-            return <div key={index} className="mySlides" style={{ display: 'none' }}>
-              {/* <div className="numbertext">testing</div> */}
-              <img src={image} style={{ width: '52.5%' }} alt="main image" />
-            </div>
-
-          } else {
-            return <div key={index} className="mySlides" style={{ display: 'none' }}>
-              {/* <div className="numbertext">testing</div> */}
-              <img src={image} style={{ width: '52.5%' }} alt="main image" />
-            </div>
-          }
-        })}
+        <AnimatePresence>
+          {<div className="mySlides" >
+            <motion.img
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.75 }}
+              src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
+          </div>}
+        </AnimatePresence>
 
         {/* nav arrows */}
         {/* <a className="prev" >{String.fromCharCode(10094)}</a>
@@ -101,16 +91,17 @@ const Gallery = () => {
         {/* thumb images */}
         <div className="row">
           {state.thumb.map((image, index) => {
-            return <div key={index} className="column" style={thumbStyleOptions} >
-              <img onClick={() => selectSlide(index)} className="demo cursor" src={image} alt="thumb image" />
-            </div>
+            return <motion.div key={index} className="column" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.75 }} >
+              <img onClick={(e) => selectedSlide(e, index)} className="demo cursor" src={image} alt="thumb image" style={{ padding: '1px' }} />
+            </motion.div>
           })}
         </div>
-
       </div>
+
+      {/* Sign in message */}
       <p style={{ fontSize: '11px', backgroundColor: 'rgba(0, 0, 0, 0.1)', padding: '20px', marginRight: '175px' }}>
-        <span id="signin" style={{ color: 'white' }} >Sign in</span>&nbsp;
-      <span style={{ color: '#bbbab3' }}>to add this item to your wishlist, follow it, or mark it as not interested</span>
+        <span id="signin" style={{ color: 'white' }} >Sign in</span>
+        <span style={{ color: '#bbbab3' }}>&nbsp;to add this item to your wishlist, follow it, or mark it as not interested</span>
       </p>
       <br />
       <br />
@@ -120,3 +111,8 @@ const Gallery = () => {
 
 export default Gallery;
 
+// TODO LIST
+// timer every 4 to 5 seconds change photos
+// triange on top of border
+// modal where you can click left and right...also stops timer, timer initiates again when out of modal mode
+// left and right clicker on side of main image
