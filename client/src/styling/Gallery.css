@@ -7,6 +7,13 @@
   position: absolute;
   font-size: 26px;
   color: white;
+  text-decoration: none;
+}
+
+.category {
+  color: #9c9b93;
+  font-size: 11px;
+  text-decoration: none;
 }
 
 .container {
@@ -108,4 +115,19 @@
 /* highlights selected item */
 .active {
   border: 2px solid #c4c2bb;
+}
+
+.my-node-enter {
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
 }
