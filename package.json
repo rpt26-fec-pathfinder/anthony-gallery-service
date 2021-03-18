@@ -14,7 +14,7 @@
     "test": "jest --detectOpenHandles ./testing",
     "start": "node ./server/server",
     "build": "webpack --mode development",
-    "seed-script": "node seed/seedingScript",
+    "seed": "node seed/seedingScript",
     "seed-aws": "node seed/awsS3",
     "react-dev": "webpack serve --mode development --open --hot",
     "server-dev": "nodemon ./server/server",

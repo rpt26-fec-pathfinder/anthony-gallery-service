@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Gallery = () => {
   const [state, setState] = useState({
     // title: 'Age of Empires II: Definitive Edition',
-    // idx: 0,
+    // idx: -1,
     // preSelectedImage: null,
     // main: [],
     // thumb: [],
@@ -116,4 +116,5 @@ export default Gallery;
 // TODO LIST
 // modal where you can click left and right...also stops timer, timer initiates again when out of modal mode
 // timer every 4 to 5 seconds change photos
+// animations fade in fade out in the transitions
 // triange on top of border
