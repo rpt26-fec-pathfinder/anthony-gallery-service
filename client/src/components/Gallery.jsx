@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import HubButton from './HubButton.jsx';
 import '../styling/Gallery.css';
 import axios from 'axios';
+import StopTimer from '../helpers/stopTimer.jsx'
+// import { duration, defaultStyle, transitionStyles, Fade } from '../helpers/transitions.jsx'
 import { motion, AnimatePresence } from "framer-motion";
 
 
@@ -10,15 +12,16 @@ const Gallery = () => {
     // title: 'Age of Empires II: Definitive Edition',
     // idx: -1,
     // preSelectedImage: null,
+    // animate: true,
     // main: [],
     // thumb: [],
     title: 'Age of Empires II: Definitive Edition',
     idx: -1,
     preSelectedImage: null,
+    animate: true,
     main: ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"],
     thumb: ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"],
   })
-
 
   useEffect(async () => {
     //   const res = await axios.get(`http://localhost:4012/images${window.location.pathname}`);
@@ -33,27 +36,25 @@ const Gallery = () => {
     //     }
     //   })
 
-    timer();
+    Timer();
   }, [])
 
-  // auto image change
-  function timer() {
+  function Timer() {
     setState((prevState) => {
       return {
         ...state,
         idx: prevState.idx < state.main.length - 1 ? prevState.idx + 1 : 0,
       }
     })
-
-    setTimeout(timer, 5000)
+    setTimeout(Timer, 5250)
   };
 
-  // func renders when thumb is clicked
   function selectedSlide(e, index) {
     e.preventDefault();
-
-    state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
-    e.target.classList.add('active')
+    StopTimer();
+    Timer();
+    // state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
+    // e.target.classList.add('active')
 
     setState(() => {
       return {
@@ -64,27 +65,35 @@ const Gallery = () => {
     })
   }
 
-
   // modal
-  function modal() {
+  function Modal() {
     console.log('modal open!')
   }
 
   return (
+
     < div id="gallery" >
+      <div>
+        <a className="category" href="">All Games<span>&nbsp;&nbsp;>&nbsp;&nbsp;</span></a>
+        <a className="category" href="">Strategy Games<span>&nbsp;&nbsp;>&nbsp;&nbsp;</span></a>
+        <a className="category" href="">Age of Empires Franchise Franchise<span>&nbsp;&nbsp;>&nbsp;&nbsp;</span></a>
+        <a className="category" href="">Age of Empires II: Definitive Edition</a></div>
       <h1 id="title">{state.title}</h1>
       {/* Comm Hub */}
       <HubButton />
       <br />
       {/* main images */}
       <div className="container">
-        <AnimatePresence>
-          {<div className="mySlides" >
-            <motion.img
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.75 }}
-              src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
-          </div>}
-        </AnimatePresence>
+
+
+        {<div className="mySlides" >
+
+          <img
+            onClick={Modal}
+            // initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.75 }}
+            src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
+
+        </div>}
 
         {/* nav arrows */}
         {/* <a className="prev" >{String.fromCharCode(10094)}</a>
