@@ -1,6 +1,7 @@
 # Photo Gallery Service
 
-> The image slider gallery that sits at the top area of the webpage (ex. https://store.steampowered.com/app/813780/Age_of_Empires_II_Definitive_Edition/)
+> The image slider gallery that sits at the top area of the webpage
+> (ex. https://store.steampowered.com/app/813780/Age_of_Empires_II_Definitive_Edition/)
 
 
 ## Related Projects
@@ -20,7 +21,7 @@
 
 > Some usage instructions:
 > 1) npm install -g webpack & npm install dependencies.
-> 2) package.json filehas scripts, look at the script "npm run seed." This is the script that will populate all the data into mongo.
+> 2) package.json file has scripts, look at the script "npm run seed." This is the script that will populate all the data into mongo.
 > If everything went according to plan there should be a "data.json" file in the seed folder showing what was loaded in a JSON format.
 >   Note: You might have to update the configs in the "db-models/database.js" file to include your own MONGO_URI to connect to your database, first.
 >   I have my MONGO_URI saved to a .gitignore file so I'm guessing most likely you'll have to make sure you can connect to your own mongodb.
