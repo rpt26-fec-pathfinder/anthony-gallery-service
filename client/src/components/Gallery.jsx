@@ -3,56 +3,54 @@ import HubButton from './HubButton.jsx';
 import '../styling/Gallery.css';
 import axios from 'axios';
 import StopTimer from '../helpers/stopTimer.jsx'
-// import { duration, defaultStyle, transitionStyles, Fade } from '../helpers/transitions.jsx'
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 
 
 const Gallery = () => {
   const [state, setState] = useState({
+    title: 'Age of Empires II: Definitive Edition',
+    idx: 0,
+    preSelectedImage: null,
+    animate: true,
+    main: [],
+    thumb: [],
     // title: 'Age of Empires II: Definitive Edition',
     // idx: -1,
     // preSelectedImage: null,
-    // animate: true,
-    // main: [],
-    // thumb: [],
-    title: 'Age of Empires II: Definitive Edition',
-    idx: -1,
-    preSelectedImage: null,
-    animate: true,
-    main: ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"],
-    thumb: ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"],
+    // main: ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"],
+    // thumb: ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"],
   })
 
   useEffect(async () => {
-    //   const res = await axios.get(`http://localhost:4012/images${window.location.pathname}`);
-    //   let main = res.data[0].mainImages.map(item => item.main)
-    //   let thumb = res.data[0].mainImages.map(item => item.thumb)
+    const res = await axios.get(`http://localhost:4012/images${window.location.pathname}`);
+    let main = res.data[0].mainImages.map(item => item.main)
+    let thumb = res.data[0].mainImages.map(item => item.thumb)
 
-    //   setState(() => {
-    //     return {
-    //       ...state,
-    //       main,
-    //       thumb,
-    //     }
-    //   })
-
-    Timer();
-  }, [])
-
-  function Timer() {
-    setState((prevState) => {
+    setState(() => {
       return {
         ...state,
-        idx: prevState.idx < state.main.length - 1 ? prevState.idx + 1 : 0,
+        main,
+        thumb,
       }
     })
-    setTimeout(Timer, 5250)
-  };
+
+    // Timer();
+  }, [])
+
+  // function Timer() {
+  //   setState((prevState) => {
+  //     return {
+  //       ...state,
+  //       idx: prevState.idx < state.main.length - 1 ? prevState.idx + 1 : 0,
+  //     }
+  //   })
+  //   setTimeout(Timer, 5250)
+  // };
 
   function selectedSlide(e, index) {
     e.preventDefault();
-    StopTimer();
-    Timer();
+    // StopTimer();
+    // Timer();
     // state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
     // e.target.classList.add('active')
 
@@ -69,9 +67,9 @@ const Gallery = () => {
   function Modal() {
     console.log('modal open!')
   }
+  console.log(state)
 
   return (
-
     < div id="gallery" >
       <div>
         <a className="category" href="">All Games<span>&nbsp;&nbsp;>&nbsp;&nbsp;</span></a>
@@ -84,15 +82,8 @@ const Gallery = () => {
       <br />
       {/* main images */}
       <div className="container">
-
-
         {<div className="mySlides" >
-
-          <img
-            onClick={Modal}
-            // initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.75 }}
-            src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
-
+          <img src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
         </div>}
 
         {/* nav arrows */}
@@ -102,9 +93,9 @@ const Gallery = () => {
         {/* thumb images */}
         <div className="row">
           {state.thumb.map((image, index) => {
-            return <motion.div key={index} className="column" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.75 }} >
+            return <div key={index} className="column"  >
               <img onClick={(e) => selectedSlide(e, index)} className="demo cursor" src={image} alt="thumb image" style={{ padding: '1px' }} />
-            </motion.div>
+            </div>
           })}
         </div>
       </div>
@@ -127,3 +118,4 @@ export default Gallery;
 // timer every 4 to 5 seconds change photos
 // animations fade in fade out in the transitions
 // triange on top of border
+
