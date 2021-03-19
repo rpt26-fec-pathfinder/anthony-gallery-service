@@ -67,7 +67,7 @@ const Gallery = () => {
   function Modal() {
     console.log('modal open!')
   }
-  console.log(state)
+  console.log(window.location)
 
   return (
     < div id="gallery" >

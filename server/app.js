@@ -5,10 +5,14 @@ const userRouter = require('./routes/route');
 const cors = require('cors')
 
 // CORS
-app.use(cors());
+// app.use(cors());
 
 // shows static files react index.html
 app.use(express.static(path.join(__dirname, '../public')));
+
+app.get('/:id', (req, res) => {
+  res.sendFile(path.resolve('public/index.html'));
+});
 
 // middleware for data sent to database
 // app.use(express.urlencoded({ extended: true }));

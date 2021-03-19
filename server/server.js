@@ -5,8 +5,6 @@ const app = require('./app')
 // const userRouter = require('./routes/route');
 const fs = require('fs');
 
-
-
 // configs
 const dotenv = require('dotenv');
 dotenv.config({ path: 'config/config.env' });
