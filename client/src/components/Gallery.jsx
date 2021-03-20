@@ -9,7 +9,7 @@ import StopTimer from '../helpers/stopTimer.jsx'
 
 const Gallery = () => {
   const [state, setState] = useState({
-    title: 'Age of Empires II: Definitive Edition',
+    title: '',
     idx: 0,
     preSelectedImage: null,
     showModal: false,
@@ -18,10 +18,13 @@ const Gallery = () => {
   })
 
   useEffect(async () => {
-    const res = await axios.get(`http://localhost:4012/images${window.location.pathname}`);
-    // const res = await axios.get(`http://localhost:3000/images${window.location.pathname}`);
-    let main = res.data[0].mainImages.map(item => item.main)
-    let thumb = res.data[0].mainImages.map(item => item.thumb)
+    const imageRes = await axios.get(`/images${window.location.pathname}`);
+    const metaRes = await axios.get(`/api/product${window.location.pathname}`);
+
+    let main = imageRes.data[0].mainImages.map(item => item.main)
+    let thumb = imageRes.data[0].mainImages.map(item => item.thumb)
+
+
 
     // let main = ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"]
 
@@ -30,6 +33,7 @@ const Gallery = () => {
     await setState(() => {
       return {
         ...state,
+        title: metaRes.data.name,
         main,
         thumb,
       }
@@ -37,6 +41,8 @@ const Gallery = () => {
 
     // Timer();
   }, [])
+
+  console.log(state)
 
   // function Timer() {
   //   setState((prevState) => {
@@ -66,7 +72,6 @@ const Gallery = () => {
     })
   }
 
-
   // modal
   function Modal(e) {
     e.preventDefault(e);
@@ -78,10 +83,11 @@ const Gallery = () => {
     })
   }
 
+
   return (
     < div id="gallery" >
       <Categories />
-      <h1 id="title" style={{ color: 'black' }}>{state.title}</h1>
+      <h1 id="title" style={{ color: 'white' }}>{state.title}</h1>
       <HubButton />
       <br />
 
