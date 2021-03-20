@@ -1,10 +1,11 @@
 import React from 'react';
 import Gallery from './components/Gallery.jsx';
+import './styling/App.css'
 
 
 const App = () => {
   return (
-    <div>
+    <div id="app-content">
       <Gallery />
     </div>
   );
