@@ -9,7 +9,7 @@ import StopTimer from '../helpers/stopTimer.jsx'
 
 const Gallery = () => {
   const [state, setState] = useState({
-    // title: '',
+    title: '',
     idx: 0,
     preSelectedImage: null,
     showModal: false,
@@ -32,7 +32,7 @@ const Gallery = () => {
     await setState(() => {
       return {
         ...state,
-        // title: metaRes.data.name,
+        title: metaRes.data.name,
         main,
         thumb,
       }
@@ -86,7 +86,7 @@ const Gallery = () => {
   return (
     < div id="gallery" >
       <Categories />
-      {/* <h1 id="title" style={{ color: 'white' }}>{state.title}</h1> */}
+      <h1 id="title" style={{ color: 'white' }}>{state.title}</h1>
       <HubButton />
       <br />
 
