@@ -12,19 +12,20 @@ const Gallery = () => {
     title: 'Age of Empires II: Definitive Edition',
     idx: 0,
     preSelectedImage: null,
-    animate: true,
+    showModal: false,
     main: [],
     thumb: [],
   })
 
   useEffect(async () => {
-    const res = await axios.get(`http://localhost:4012/images${window.location.pathname}`);
-    let main = res.data[0].mainImages.map(item => item.main)
-    let thumb = res.data[0].mainImages.map(item => item.thumb)
+    // const res = await axios.get(`http://localhost:4012/images${window.location.pathname}`);
+    // const res = await axios.get(`http://localhost:3000/images${window.location.pathname}`);
+    // let main = res.data[0].mainImages.map(item => item.main)
+    // let thumb = res.data[0].mainImages.map(item => item.thumb)
 
-    // let main = ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"]
+    let main = ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"]
 
-    // let thumb = ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"]
+    let thumb = ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"]
 
     await setState(() => {
       return {
@@ -54,6 +55,8 @@ const Gallery = () => {
     // state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
     // e.target.classList.add('active')
 
+
+
     setState(() => {
       return {
         ...state,
@@ -63,11 +66,17 @@ const Gallery = () => {
     })
   }
 
+
   // modal
-  function Modal() {
-    console.log('modal open!')
+  function Modal(e) {
+    e.preventDefault(e);
+    setState(prevState => {
+      return {
+        ...state,
+        showModal: !prevState.showModal
+      }
+    })
   }
-  console.log(window.location)
 
   return (
     < div id="gallery" >
@@ -76,15 +85,22 @@ const Gallery = () => {
       <HubButton />
       <br />
 
-      {/* main images */}
+      {/* main images & modal */}
       <div className="container">
-        {<div className="mySlides" >
-          <img src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
-        </div>}
+        {state.showModal ?
+          <div id="modal">
+            <img id="myModal"
+              src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
+          </div>
+          : <div className="mySlides" >
+            <img
+              onClick={Modal}
+              src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
+          </div>}
 
         {/* nav arrows */}
-        {/* <a className="prev" >{String.fromCharCode(10094)}</a>
-        <a className="next" >{String.fromCharCode(10095)}</a> */}
+        <a className="prev" onClick={(e) => selectedSlide(e, index)}>{String.fromCharCode(10094)}</a>
+        <a className="next" onClick={(e) => selectedSlide(e, index)}>{String.fromCharCode(10095)}</a>
 
         {/* thumb images */}
         <div className="row">

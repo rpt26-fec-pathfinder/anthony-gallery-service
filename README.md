@@ -22,10 +22,11 @@
 
 > Some usage instructions:
 > 1) npm install -g webpack & npm install dependencies.
-> 2) connect to mongo with your MONGO_URI (db-models/database.js) & npm run seed
-> 3) npm run build
-> 4) npm run start
-> 5) Everything should be working ...I'm hoping it does 😬 !
+> 2) connect to mongo with your MONGO_URI (db-models/database.js) & npm run seed.
+> 3) check to see GET REQUEST in client/src/components/Gallery.jsx to check PORT is the same as your proxy.
+> 4) npm run build.
+> 5) npm run start.
+> 6) Everything should be working ...I'm hoping it does 😬 !
 
 ## Requirements
 

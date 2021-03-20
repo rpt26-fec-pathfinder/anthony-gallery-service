@@ -31,23 +31,27 @@
 
 .prev,
 .next {
+display: block;
   cursor: pointer;
   position: absolute;
   top: 40%;
-  width: 42%;
-  padding: 16px;
-  margin-top: 165px;
+  width: 20%;
+  padding: 0;
+  margin-top: 40px;
   color: white;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 40px;
   border-radius: 0 3px 3px 0;
   user-select: none;
   -webkit-user-select: none;
 }
 
+.prev {
+  margin-left: 50px;
+}
+
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
 }
 
 .numbertext {
@@ -110,22 +114,16 @@
   background-color: #3d6c8d;
 }
 
-/* highlights selected item */
-.active {
-  border: 2px solid #c4c2bb;
-}
-
-.my-node-enter {
-  opacity: 0;
-}
-.my-node-enter-active {
-  opacity: 1;
-  transition: opacity 200ms;
-}
-.my-node-exit {
-  opacity: 1;
-}
-.my-node-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
+/* modal */
+#modal {
+  display: 'none';
+  position: fixed;
+  padding-top: 90px;
+  padding-left: 200px;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.94);
 }
