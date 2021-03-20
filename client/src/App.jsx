@@ -1,13 +1,11 @@
 import React from 'react';
 import Gallery from './components/Gallery.jsx';
-// import NavBar from './components/NavBar.jsx';
-// import './styling/App.css';
+import './styling/App.css'
 
 
 const App = () => {
   return (
-    <div>
-      {/* <NavBar /> */}
+    <div id="app-content">
       <Gallery />
     </div>
   );

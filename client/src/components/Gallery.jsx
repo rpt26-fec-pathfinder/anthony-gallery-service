@@ -12,13 +12,14 @@ const Gallery = () => {
     title: 'Age of Empires II: Definitive Edition',
     idx: 0,
     preSelectedImage: null,
-    animate: true,
+    showModal: false,
     main: [],
     thumb: [],
   })
 
   useEffect(async () => {
     const res = await axios.get(`http://localhost:4012/images${window.location.pathname}`);
+    // const res = await axios.get(`http://localhost:3000/images${window.location.pathname}`);
     let main = res.data[0].mainImages.map(item => item.main)
     let thumb = res.data[0].mainImages.map(item => item.thumb)
 
@@ -54,6 +55,8 @@ const Gallery = () => {
     // state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
     // e.target.classList.add('active')
 
+
+
     setState(() => {
       return {
         ...state,
@@ -63,11 +66,17 @@ const Gallery = () => {
     })
   }
 
+
   // modal
-  function Modal() {
-    console.log('modal open!')
+  function Modal(e) {
+    e.preventDefault(e);
+    setState(prevState => {
+      return {
+        ...state,
+        showModal: !prevState.showModal
+      }
+    })
   }
-  console.log(window.location)
 
   return (
     < div id="gallery" >
@@ -76,15 +85,22 @@ const Gallery = () => {
       <HubButton />
       <br />
 
-      {/* main images */}
+      {/* main images & modal */}
       <div className="container">
-        {<div className="mySlides" >
-          <img src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
-        </div>}
+        {state.showModal ?
+          <div id="modal">
+            <img id="myModal"
+              src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
+          </div>
+          : <div className="mySlides" >
+            <img
+              onClick={Modal}
+              src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
+          </div>}
 
         {/* nav arrows */}
-        {/* <a className="prev" >{String.fromCharCode(10094)}</a>
-        <a className="next" >{String.fromCharCode(10095)}</a> */}
+        <a className="prev" onClick={(e) => selectedSlide(e, index)}>{String.fromCharCode(10094)}</a>
+        <a className="next" onClick={(e) => selectedSlide(e, index)}>{String.fromCharCode(10095)}</a>
 
         {/* thumb images */}
         <div className="row">
