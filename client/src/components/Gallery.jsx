@@ -9,7 +9,7 @@ import StopTimer from '../helpers/stopTimer.jsx'
 
 const Gallery = () => {
   const [state, setState] = useState({
-    title: '',
+    // title: '',
     idx: 0,
     preSelectedImage: null,
     showModal: false,
@@ -25,7 +25,6 @@ const Gallery = () => {
     let thumb = imageRes.data[0].mainImages.map(item => item.thumb)
 
 
-
     // let main = ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"]
 
     // let thumb = ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"]
@@ -33,7 +32,7 @@ const Gallery = () => {
     await setState(() => {
       return {
         ...state,
-        title: metaRes.data.name,
+        // title: metaRes.data.name,
         main,
         thumb,
       }
@@ -87,7 +86,7 @@ const Gallery = () => {
   return (
     < div id="gallery" >
       <Categories />
-      <h1 id="title" style={{ color: 'white' }}>{state.title}</h1>
+      {/* <h1 id="title" style={{ color: 'white' }}>{state.title}</h1> */}
       <HubButton />
       <br />
 
