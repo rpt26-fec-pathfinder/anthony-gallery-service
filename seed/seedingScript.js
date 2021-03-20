@@ -31,7 +31,7 @@ const generateData = function () {
     let mainLen = 11;
 
     if (page !== 1) {
-      mainLen = 5;
+      mainLen = 8;
     }
 
     for (let main = 1; main <= mainLen; main++) {
@@ -74,7 +74,6 @@ const generateData = function () {
 
 
 // creates json file and saves data to mongodb.
-// let data = generateData();
 const createJSONData = function (data) {
   fs.writeFile(__dirname + '/data.json', JSON.stringify(data), (err) => {
     if (err) {
@@ -105,6 +104,13 @@ const createJSONData = function (data) {
       });
     }
   });
+  setTimeout(() => {
+    console.log(
+      `\nSeeding Script is done! Please check your mongodb database. \nThere should be a "data.json" file that shows how the data looks like. \nHave a nice day 😀 !\n`
+    )
+    process.exit();
+  }, 2000);
+
 };
 
 createJSONData(generateData());
