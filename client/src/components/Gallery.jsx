@@ -5,6 +5,7 @@ import SignIn from './SignIn.jsx';
 import '../styling/Gallery.css';
 import axios from 'axios';
 import StopTimer from '../helpers/stopTimer.jsx'
+import { motion, AnimatePresence } from "framer-motion";
 
 
 const Gallery = () => {
@@ -18,21 +19,21 @@ const Gallery = () => {
   })
 
   useEffect(async () => {
-    const imageRes = await axios.get(`/images${window.location.pathname}`);
-    const metaRes = await axios.get(`/api/product${window.location.pathname}`);
+    // const imageRes = await axios.get(`/images${window.location.pathname}`);
+    // const metaRes = await axios.get(`/api/product${window.location.pathname}`);
 
-    let main = imageRes.data[0].mainImages.map(item => item.main)
-    let thumb = imageRes.data[0].mainImages.map(item => item.thumb)
+    // let main = imageRes.data[0].mainImages.map(item => item.main)
+    // let thumb = imageRes.data[0].mainImages.map(item => item.thumb)
 
 
-    // let main = ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"]
+    let main = ["https://steam-fec.s3.amazonaws.com/steam1/main-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/main-1-11.jpg"]
 
-    // let thumb = ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"]
+    let thumb = ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"]
 
     await setState(() => {
       return {
         ...state,
-        title: metaRes.data.name,
+        // title: metaRes.data.name,
         main,
         thumb,
       }
@@ -86,7 +87,9 @@ const Gallery = () => {
   return (
     < div id="gallery" >
       <Categories />
-      <h1 id="title" style={{ color: 'white' }}>{state.title}</h1>
+
+      {/* TITLE */}
+      {/* <h1 id="title" style={{ color: 'white' }}>{state.title}</h1> */}
       <HubButton />
       <br />
 
@@ -97,10 +100,21 @@ const Gallery = () => {
             <img id="myModal"
               src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
           </div>
+
+
           : <div className="mySlides" >
-            <img
-              onClick={Modal}
-              src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
+            <AnimatePresence>
+              <motion.img
+                id="mainImage"
+                onClick={Modal}
+                src={state.main[state.idx]}
+                key={state.main[state.idx]}
+                initial={{ opacity: 0.3 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                style={{ width: '52.5%' }}
+                alt="main image" />
+            </AnimatePresence>
           </div>}
 
         {/* nav arrows */}

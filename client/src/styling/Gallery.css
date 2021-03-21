@@ -129,3 +129,8 @@ display: block;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.94);
 }
+
+#mainImage {
+  min-height: 345px;
+  min-width: 597px;
+}
