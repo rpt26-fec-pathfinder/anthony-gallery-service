@@ -27,7 +27,7 @@
 
 .cursor {
   cursor: pointer;
-  margin-bottom: -4px;
+  margin-bottom: 3px;
 }
 
 .prev,
@@ -35,7 +35,7 @@
 display: block;
   cursor: pointer;
   position: absolute;
-  top: 40%;
+  top: 35%;
   width: 20%;
   padding: 0;
   margin-top: 40px;
@@ -48,11 +48,11 @@ display: block;
 }
 
 .prev {
-  margin-left: 50px;
+  margin-left: 25px;
 }
 
 .next {
-  right: 0;
+  margin-left: 850px;
 }
 
 .numbertext {
@@ -132,4 +132,9 @@ display: block;
 
 #mainImage {
   min-height: 350px;
+}
+
+/* selected image borders */
+.active {
+  border: 2.5px solid #d1d0c5;
 }

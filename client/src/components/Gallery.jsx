@@ -62,10 +62,21 @@ const Gallery = () => {
     // state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
     // e.target.classList.add('active')
 
+    let page;
+    if (index < 0) {
+      page = state.thumb.length - 1;
+
+    } else if (index >= state.thumb.length) {
+      page = 0;
+
+    } else {
+      page = index;
+    }
+
     setState(() => {
       return {
         ...state,
-        idx: index,
+        idx: page,
         preSelectedImage: e.target,
       }
     })
@@ -99,8 +110,8 @@ const Gallery = () => {
               src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
 
             {/* NAVIGATION ARROWS */}
-            <a className="prev" onClick={(e) => selectedSlide(e, index)}>{String.fromCharCode(10094)}</a>
-            <a className="next" onClick={(e) => selectedSlide(e, index)}>{String.fromCharCode(10095)}</a>
+            <a className="prev" onClick={(e) => selectedSlide(e, state.idx - 1)}>{String.fromCharCode(10094)}</a>
+            <a className="next" onClick={(e) => selectedSlide(e, state.idx + 1)}>{String.fromCharCode(10095)}</a>
           </div>
 
           : <div className="mySlides" >
