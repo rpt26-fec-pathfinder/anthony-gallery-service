@@ -17,7 +17,7 @@ export const NavSelect = styled.a`
 
   &:after  {
     content: '';
-    height: 250%;
+    height: 230%;
     width: 0.5px;
     margin-top: -14px;
     position: absolute;
