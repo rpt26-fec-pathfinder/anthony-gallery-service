@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import NavBar from './NavBar.jsx';
 import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
@@ -108,6 +109,7 @@ const Gallery = () => {
 
   return (
     <Wrapper>
+      <NavBar />
       <Categories />
       <Title>{state.title}</Title>
       <HubButton />
