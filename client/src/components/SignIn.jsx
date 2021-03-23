@@ -1,22 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Paragraph, Sign, Message } from '../styling/SignInStyled.jsx'
 
-const Paragraph = styled.p`
-  background-color:rgba(0, 0, 0, 0.2);
-  margin-top: 2px;
-  margin-right: 175px;
-  padding: 15px;
-`
-
-const Sign = styled.span`
-  color: white;
-  font-size: 10px;
-`
-
-const Message = styled.span`
-  color: #bbbab3;
-  font-size: 10px;
-`
 
 const SignIn = () => {
   return (

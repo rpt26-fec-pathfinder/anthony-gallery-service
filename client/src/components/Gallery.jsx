@@ -127,7 +127,7 @@ const Gallery = () => {
             <Next onClick={(e) => selectedSlide(e, state.idx + 1)}>{String.fromCharCode(10095)}</Next>
           </div>
 
-          : <div className="mySlides" style={{ cursor: 'pointer' }} >
+          : <div style={{ cursor: 'pointer', marginTop: '-40px' }} >
             <LazyLoad height={350}>
               <motion.img
                 onClick={Modal}
