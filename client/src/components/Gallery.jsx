@@ -3,13 +3,13 @@ import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
 import StopTimer from '../helpers/stopTimer.jsx'
-import '../styling/Gallery.css';
+import '../styling/WebkitScrollBar.css';
+import { Wrapper, Title, Container, Prev, Next, Row, Col, ThumbImg } from '../styling/GalleryStyled.jsx'
 
 // npm installed packages
 import axios from 'axios';
 import LazyLoad from 'react-lazyload';
 import { motion } from "framer-motion";
-
 
 
 const Gallery = () => {
@@ -82,6 +82,19 @@ const Gallery = () => {
     })
   }
 
+  const modelOptions = {
+    position: 'fixed',
+    paddingTop: '90px',
+    paddingLeft: '200px',
+    left: '0',
+    top: '0',
+    width: '130%',
+    height: '100%',
+    overflow: 'auto',
+    backgroundColor: 'rgba(0, 0, 0, 0.94)',
+
+  }
+
   // modal
   function Modal(e) {
     e.preventDefault(e);
@@ -93,28 +106,27 @@ const Gallery = () => {
     })
   }
 
-  return (
-    < div id="gallery" >
-      <Categories />
 
-      {/* TITLE */}
-      <h1 id="title" style={{ color: 'white' }}>{state.title}</h1>
+  return (
+    <Wrapper>
+      <Categories />
+      <Title>{state.title}</Title>
       <HubButton />
       <br />
 
       {/* MAIN IMAGES & MODAL */}
-      <div className="container">
+      <Container>
         {state.showModal ?
-          <div id="modal">
+          <div style={modelOptions}>
             <img id="myModal"
               src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
 
-            {/* NAVIGATION ARROWS */}
-            <a className="prev" onClick={(e) => selectedSlide(e, state.idx - 1)}>{String.fromCharCode(10094)}</a>
-            <a className="next" onClick={(e) => selectedSlide(e, state.idx + 1)}>{String.fromCharCode(10095)}</a>
+            {/* NAVIGATION ARROWS/BUTTONS */}
+            <Prev onClick={(e) => selectedSlide(e, state.idx - 1)}>{String.fromCharCode(10094)}</Prev>
+            <Next onClick={(e) => selectedSlide(e, state.idx + 1)}>{String.fromCharCode(10095)}</Next>
           </div>
 
-          : <div className="mySlides" >
+          : <div className="mySlides" style={{ cursor: 'pointer' }} >
             <LazyLoad height={350}>
               <motion.img
                 onClick={Modal}
@@ -124,23 +136,22 @@ const Gallery = () => {
                 initial={{ opacity: 0.3 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
-                style={{ width: '52.5%' }}
+                style={{ width: '52.5%', minHeight: '350px' }}
                 alt="main image" />
             </LazyLoad>
           </div>}
 
         {/* THUMBNAIL IMAGES */}
-        <div className="row">
+        <Row>
           {state.thumb.map((image, index) => {
-            return <div key={index} className="column"  >
-              <img onClick={(e) => selectedSlide(e, index)} className="demo cursor" src={image} alt="thumb image" style={{ padding: '1px' }} />
-            </div>
+            return <Col key={index} >
+              <ThumbImg onClick={(e) => selectedSlide(e, index)} src={image} alt="thumb image" />
+            </Col>
           })}
-        </div>
-
-      </div>
+        </Row>
+      </Container>
       <SignIn />
-    </div >
+    </Wrapper >
   );
 };
 
@@ -149,5 +160,8 @@ export default Gallery;
 // TODO LIST
 // modal where you can click left and right...also stops timer, timer initiates again when out of modal mode
 // timer every 4 to 5 seconds change photos
-// triange on top of border
 
+/* selected image borders */
+// .active {
+//   border: 2.5px solid #d1d0c5;
+// }
