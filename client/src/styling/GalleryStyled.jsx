@@ -13,14 +13,14 @@ export const Title = styled.h1`
 export const Container = styled.div`
   margin-top: -20px;
 `
-export const Prev = styled.a`
+export const Prev = styled.div`
   display: block;
   cursor: pointer;
   position: absolute;
   top: 35%;
-  width: 20%;
-  padding: 0;
-  margin-top: 40px;
+  width: 50%;
+  /* padding-right: 00px; */
+  margin-top: 300px;
   color: white;
   font-weight: bold;
   font-size: 40px;
@@ -29,14 +29,14 @@ export const Prev = styled.a`
   -webkit-user-select: none;
   margin-left: 20px;
 `
-export const Next = styled.a`
+export const Next = styled.div`
   display: block;
   cursor: pointer;
   position: absolute;
   top: 35%;
   width: 20%;
   padding: 0;
-  margin-top: 40px;
+  margin-top: 300px;
   color: white;
   font-weight: bold;
   font-size: 40px;
@@ -44,6 +44,27 @@ export const Next = styled.a`
   user-select: none;
   -webkit-user-select: none;
   margin-left: 850px;
+`
+
+export const NavBtn = styled.a`
+  color: #54a5d4;
+  background-color: #46708a;
+  font-size: 15px;
+  padding: 0px 15px;
+  border-radius: 1.5px;
+  margin-left: -20px;
+`
+
+export const ModelBackGround = styled.div`
+  color: white;
+  font-size: 11.5px;
+  background-color: #305972;
+  width: 910px;
+  /* margin-top: -400px; */
+  margin-top: -540px;
+  margin-left:-10px;
+  padding-bottom: 540px;
+  border-radius: 5px;
 `
 
 export const Row = styled.div`
@@ -67,4 +88,18 @@ export const Col = styled.div`
 `
 export const ThumbImg = styled.img`
   padding: 1px;
+`
+
+export const ScreenShots = styled.p`
+  color: white;
+  font-size: 11.5px;
+  margin: 5px 0px 0px 385px;
+`
+
+
+export const ModalImgDownload = styled.a`
+&:hover {
+    cursor: pointer;
+    color: #54a5d4;
+  }
 `

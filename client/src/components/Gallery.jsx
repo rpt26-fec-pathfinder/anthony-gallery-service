@@ -4,13 +4,13 @@ import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
 import StopTimer from '../helpers/stopTimer.jsx'
-import '../styling/WebkitScrollBar.css';
-import { Wrapper, Title, Container, Prev, Next, Row, Col, ThumbImg } from '../styling/GalleryStyled.jsx'
+import { Wrapper, Title, Container, Prev, Next, Row, Col, ThumbImg, NavBtn, ScreenShots, ModelBackGround, ModalImgDownload } from '../styling/GalleryStyled.jsx'
 
 // npm installed packages
 import axios from 'axios';
 import LazyLoad from 'react-lazyload';
 import { motion } from "framer-motion";
+import { BsDownload } from "react-icons/bs";
 
 
 const Gallery = () => {
@@ -92,7 +92,7 @@ const Gallery = () => {
     width: '130%',
     height: '100%',
     overflow: 'auto',
-    backgroundColor: 'rgba(0, 0, 0, 0.94)',
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
 
   }
 
@@ -119,12 +119,24 @@ const Gallery = () => {
       <Container>
         {state.showModal ?
           <div style={modelOptions}>
-            <img id="myModal"
+            <img
               src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
 
             {/* NAVIGATION ARROWS/BUTTONS */}
-            <Prev onClick={(e) => selectedSlide(e, state.idx - 1)}>{String.fromCharCode(10094)}</Prev>
-            <Next onClick={(e) => selectedSlide(e, state.idx + 1)}>{String.fromCharCode(10095)}</Next>
+            <ModelBackGround>
+              <div style={{ color: '#305972' }}>This is just to create space only, it blend w/ the background</div>
+              <ModalImgDownload>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /> </ModalImgDownload>
+              <br />
+            </ModelBackGround>
+
+            <Prev onClick={(e) => selectedSlide(e, state.idx - 1)}>
+              <NavBtn>Prev</NavBtn>
+            </Prev>
+            <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
+            <Next onClick={(e) => selectedSlide(e, state.idx + 1)}>
+              <NavBtn>Next</NavBtn>
+            </Next>
+
           </div>
 
           : <div style={{ cursor: 'pointer', marginTop: '-40px' }} >
