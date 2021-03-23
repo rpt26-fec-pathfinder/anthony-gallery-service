@@ -106,7 +106,6 @@ const Gallery = () => {
     })
   }
 
-
   return (
     <Wrapper>
       <Categories />
