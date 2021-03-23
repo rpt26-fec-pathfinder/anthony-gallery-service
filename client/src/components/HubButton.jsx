@@ -21,7 +21,7 @@ const Button = styled.a`
 const HubButton = () => {
   return (
     <div>
-      {/* <a id="community-hub">Community Hub</a> */}
+      <br />
       <Button>Community Hub</Button>
       <br />
       <br />
