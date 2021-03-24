@@ -44,19 +44,21 @@ const Gallery = () => {
     })
   }, [])
 
+  // Timer when picture is clicked
   function updateSlide() {
+    StopTimer();
+
     setTimeout(() => {
       updateSlide();
       setState(prevState => {
         return {
           ...state,
-          idx: prevState.idx + 1,
+          idx: prevState.idx < prevState.thumb.length - 1 ? prevState.idx + 1 : 0,
         }
       })
     }, 5250)
-
+    console.log('hello')
   }
-
 
   function selectedSlide(index) {
 
@@ -102,7 +104,7 @@ const Gallery = () => {
 
   function Modal(e) {
     e.preventDefault(e);
-    StopTimer(updateSlide)
+    StopTimer()
     setState(prevState => {
       return {
         ...state,
