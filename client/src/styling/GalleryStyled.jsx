@@ -14,35 +14,27 @@ export const Container = styled.div`
   margin-top: -20px;
 `
 export const Prev = styled.div`
-  display: block;
-  cursor: pointer;
+  display: inline;
   position: absolute;
   top: 35%;
   width: 50%;
-  /* padding-right: 00px; */
   margin-top: 300px;
   color: white;
   font-weight: bold;
   font-size: 40px;
   border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
   margin-left: 20px;
 `
 export const Next = styled.div`
-  display: block;
-  cursor: pointer;
+  display: inline;
   position: absolute;
   top: 35%;
   width: 20%;
-  padding: 0;
   margin-top: 300px;
   color: white;
   font-weight: bold;
   font-size: 40px;
   border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
   margin-left: 850px;
 `
 
@@ -53,18 +45,27 @@ export const NavBtn = styled.a`
   padding: 0px 15px;
   border-radius: 1.5px;
   margin-left: -20px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const ModelBackGround = styled.div`
   color: white;
   font-size: 11.5px;
   background-color: #305972;
-  width: 910px;
+  width: 913px;
   /* margin-top: -400px; */
   margin-top: -540px;
   margin-left:-10px;
   padding-bottom: 540px;
   border-radius: 5px;
+
+
+  &:hover {
+    cursor: default;
+  }
 `
 
 export const Row = styled.div`
@@ -90,12 +91,15 @@ export const ThumbImg = styled.img`
   padding: 1px;
 `
 
-export const ScreenShots = styled.p`
+export const ScreenShots = styled.div`
   color: white;
   font-size: 11.5px;
-  margin: 5px 0px 0px 385px;
-`
+  margin: -25px 0px 0px 390px;
 
+  &:hover {
+    cursor: default;
+  }
+`
 
 export const ModalImgDownload = styled.a`
 &:hover {

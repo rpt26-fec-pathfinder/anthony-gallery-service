@@ -117,7 +117,7 @@ const Gallery = () => {
 
       {/* MAIN IMAGES & MODAL */}
       <Container>
-        {state.showModal ?
+        {!state.showModal ?
           <div style={modelOptions}>
             <img
               src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
@@ -129,12 +129,13 @@ const Gallery = () => {
               <br />
             </ModelBackGround>
 
-            <Prev onClick={(e) => selectedSlide(e, state.idx - 1)}>
-              <NavBtn>Prev</NavBtn>
+            <Prev >
+              <NavBtn onClick={(e) => selectedSlide(e, state.idx - 1)}>Prev</NavBtn>
             </Prev>
+            {/* Pic out of How Many */}
             <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
-            <Next onClick={(e) => selectedSlide(e, state.idx + 1)}>
-              <NavBtn>Next</NavBtn>
+            <Next >
+              <NavBtn onClick={(e) => selectedSlide(e, state.idx + 1)}>Next</NavBtn>
             </Next>
 
           </div>
