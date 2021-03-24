@@ -56,12 +56,10 @@ export const ModelBackGround = styled.div`
   font-size: 11.5px;
   background-color: #305972;
   width: 913px;
-  /* margin-top: -400px; */
   margin-top: -540px;
   margin-left:-10px;
   padding-bottom: 540px;
   border-radius: 5px;
-
 
   &:hover {
     cursor: default;
@@ -105,5 +103,13 @@ export const ModalImgDownload = styled.a`
 &:hover {
     cursor: pointer;
     color: #54a5d4;
+  }
+`
+
+export const Main = styled.div`
+ margin-top: -40px;
+
+ &:hover {
+    cursor: pointer;
   }
 `

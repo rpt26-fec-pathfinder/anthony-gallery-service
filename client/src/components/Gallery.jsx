@@ -4,7 +4,7 @@ import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
 import StopTimer from '../helpers/stopTimer.jsx'
-import { Wrapper, Title, Container, Prev, Next, Row, Col, ThumbImg, NavBtn, ScreenShots, ModelBackGround, ModalImgDownload } from '../styling/GalleryStyled.jsx'
+import { Main, Wrapper, Title, Container, Prev, Next, Row, Col, ThumbImg, NavBtn, ScreenShots, ModelBackGround, ModalImgDownload } from '../styling/GalleryStyled.jsx'
 
 // npm installed packages
 import axios from 'axios';
@@ -42,24 +42,24 @@ const Gallery = () => {
         thumb,
       }
     })
-
-    // Timer();
   }, [])
 
-  // function Timer() {
-  //   setState((prevState) => {
-  //     return {
-  //       ...state,
-  //       idx: prevState.idx < state.main.length - 1 ? prevState.idx + 1 : 0,
-  //     }
-  //   })
-  //   setTimeout(Timer, 5250)
-  // };
+  function updateSlide() {
+    setTimeout(() => {
+      updateSlide();
+      setState(prevState => {
+        return {
+          ...state,
+          idx: prevState.idx + 1,
+        }
+      })
+    }, 5250)
 
-  function selectedSlide(e, index) {
-    e.preventDefault();
-    // StopTimer();
-    // Timer();
+  }
+
+
+  function selectedSlide(index) {
+
     // state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
     // e.target.classList.add('active')
 
@@ -78,10 +78,15 @@ const Gallery = () => {
       return {
         ...state,
         idx: page,
-        preSelectedImage: e.target,
+        // preSelectedImage: e.target,
       }
     })
+
+    if (state.showModal === false) {
+      updateSlide();
+    }
   }
+
 
   const modelOptions = {
     position: 'fixed',
@@ -93,12 +98,11 @@ const Gallery = () => {
     height: '100%',
     overflow: 'auto',
     backgroundColor: 'rgba(0, 0, 0, 0.9)',
-
   }
 
-  // modal
   function Modal(e) {
     e.preventDefault(e);
+    StopTimer(updateSlide)
     setState(prevState => {
       return {
         ...state,
@@ -117,7 +121,7 @@ const Gallery = () => {
 
       {/* MAIN IMAGES & MODAL */}
       <Container>
-        {!state.showModal ?
+        {state.showModal ?
           <div style={modelOptions}>
             <img
               src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
@@ -130,17 +134,16 @@ const Gallery = () => {
             </ModelBackGround>
 
             <Prev >
-              <NavBtn onClick={(e) => selectedSlide(e, state.idx - 1)}>Prev</NavBtn>
+              <NavBtn onClick={() => selectedSlide(state.idx - 1)}>Prev</NavBtn>
             </Prev>
             {/* Pic out of How Many */}
             <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
             <Next >
-              <NavBtn onClick={(e) => selectedSlide(e, state.idx + 1)}>Next</NavBtn>
+              <NavBtn onClick={() => selectedSlide(state.idx + 1)}>Next</NavBtn>
             </Next>
-
           </div>
 
-          : <div style={{ cursor: 'pointer', marginTop: '-40px' }} >
+          : <Main >
             <LazyLoad height={350}>
               <motion.img
                 onClick={Modal}
@@ -153,13 +156,13 @@ const Gallery = () => {
                 style={{ width: '52.5%', minHeight: '350px' }}
                 alt="main image" />
             </LazyLoad>
-          </div>}
+          </Main>}
 
         {/* THUMBNAIL IMAGES */}
         <Row>
           {state.thumb.map((image, index) => {
             return <Col key={index} >
-              <ThumbImg onClick={(e) => selectedSlide(e, index)} src={image} alt="thumb image" />
+              <ThumbImg onClick={() => selectedSlide(index)} src={image} alt="thumb image" />
             </Col>
           })}
         </Row>
