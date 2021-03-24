@@ -3,7 +3,8 @@ import NavBar from './NavBar.jsx';
 import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
-import StopTimer from '../helpers/stopTimer.jsx'
+import StopTimer from '../helpers/stopTimer.jsx';
+import '../styling/Gallery.css'
 import { Main, Wrapper, Title, Container, Prev, Next, Row, Col, ThumbImg, NavBtn, ScreenShots, ModelBackGround, ModalImgDownload } from '../styling/GalleryStyled.jsx'
 
 // npm installed packages
@@ -72,13 +73,15 @@ const Gallery = () => {
         }
       })
     }, 5250)
-    console.log('hello')
   }
 
   // Selects thumbnail
-  function selectedSlide(index) {
-    // state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
-    // e.target.classList.add('active')
+  function selectedSlide(index, e) {
+    e.preventDefault();
+    state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
+    e.target.classList.add('active')
+    let thumbs = document.getElementsByClassName('thumb active')
+    console.log(thumbs)
 
     let page;
     if (index < 0) {
@@ -102,7 +105,18 @@ const Gallery = () => {
     }
   }
 
-  // style for MODAL
+  // Selects MODAL
+  function Modal(e) {
+    e.preventDefault();
+    StopTimer()
+    setState(prevState => {
+      return {
+        ...state,
+        showModal: !prevState.showModal
+      }
+    })
+  }
+
   const modelOptions = {
     position: 'fixed',
     paddingTop: '90px',
@@ -113,18 +127,6 @@ const Gallery = () => {
     height: '100%',
     overflow: 'auto',
     backgroundColor: 'rgba(0, 0, 0, 0.9)',
-  }
-
-  // Selects MODAL
-  function Modal(e) {
-    e.preventDefault(e);
-    StopTimer()
-    setState(prevState => {
-      return {
-        ...state,
-        showModal: !prevState.showModal
-      }
-    })
   }
 
   return (
@@ -149,12 +151,12 @@ const Gallery = () => {
               <br />
             </ModelBackGround>
             <Prev >
-              <NavBtn onClick={() => selectedSlide(state.idx - 1)}>Prev</NavBtn>
+              <NavBtn onClick={(e) => selectedSlide(state.idx - 1, e)}>Prev</NavBtn>
             </Prev>
             {/* Pic out of How Many */}
             <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
             <Next >
-              <NavBtn onClick={() => selectedSlide(state.idx + 1)}>Next</NavBtn>
+              <NavBtn onClick={(e) => selectedSlide(state.idx + 1, e)}>Next</NavBtn>
             </Next>
           </div>
 
@@ -176,9 +178,19 @@ const Gallery = () => {
         {/* THUMBNAIL IMAGES */}
         <Row>
           {state.thumb.map((image, index) => {
-            return <Col key={index} >
-              <ThumbImg onClick={() => selectedSlide(index)} src={image} alt="thumb image" />
-            </Col>
+            if (index === 0) {
+              return <Col key={index} >
+                <ThumbImg className="thumb active" onClick={(e) => selectedSlide(index, e)} src={image} alt="thumb image" />
+              </Col>
+
+            } else {
+              return <Col key={index} >
+                <ThumbImg className="thumb" onClick={(e) => selectedSlide(index, e)} src={image} alt="thumb image" />
+              </Col>
+            }
+            // return <Col key={index} >
+            //   <ThumbImg className="thumb" onClick={(e) => selectedSlide(index, e)} src={image} alt="thumb image" />
+            // </Col>
           })}
         </Row>
       </Container>
@@ -190,7 +202,8 @@ const Gallery = () => {
 export default Gallery;
 
 // TODO LIST
-// modal where you can click left and right...also stops timer, timer initiates again when out of modal mode
+// be able to close modal
+// highlight borders
 
 /* selected image borders */
 // .active {
