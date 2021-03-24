@@ -45,7 +45,7 @@ const Gallery = () => {
     })
   }, [])
 
-  let modalRef = useRef();
+
   // useEffect(() => {
   //   document.addEventListener("mousedown", (e) => {
   //     if (!modalRef.current.contains(e.target)) {
@@ -143,7 +143,7 @@ const Gallery = () => {
               src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
 
             {/* NAVIGATION ARROWS/BUTTONS */}
-            <ModelBackGround ref={modalRef}>
+            <ModelBackGround>
               <div style={{ color: '#305972' }}>This is just to create space only, it blend w/ the background</div>
               <ModalImgDownload>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /> </ModalImgDownload>
               <br />
