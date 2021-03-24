@@ -12,15 +12,16 @@ import LazyLoad from 'react-lazyload';
 import { motion } from "framer-motion";
 import { BsDownload } from "react-icons/bs";
 
-
+// STATE Data
 const Gallery = () => {
   const [state, setState] = useState({
     title: 'Age of Empires II: Definitive Edition',
     idx: 0,
-    preSelectedImage: null,
-    showModal: false,
     main: [],
     thumb: [],
+    preSelectedImage: null,
+    showModal: false,
+    isOpen: false,
   })
 
   useEffect(async () => {
@@ -44,7 +45,21 @@ const Gallery = () => {
     })
   }, [])
 
-  // Timer when picture is clicked
+  let modalRef = useRef();
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", (e) => {
+  //     if (!modalRef.current.contains(e.target)) {
+  //       setState(prevState => {
+  //         return {
+  //           ...state,
+  //           showModal: false,
+  //         }
+  //       })
+  //     }
+  //   })
+  // })
+
+  // Timer
   function updateSlide() {
     StopTimer();
 
@@ -60,18 +75,16 @@ const Gallery = () => {
     console.log('hello')
   }
 
+  // Selects thumbnail
   function selectedSlide(index) {
-
     // state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
     // e.target.classList.add('active')
 
     let page;
     if (index < 0) {
       page = state.thumb.length - 1;
-
     } else if (index >= state.thumb.length) {
       page = 0;
-
     } else {
       page = index;
     }
@@ -89,7 +102,7 @@ const Gallery = () => {
     }
   }
 
-
+  // style for MODAL
   const modelOptions = {
     position: 'fixed',
     paddingTop: '90px',
@@ -102,6 +115,7 @@ const Gallery = () => {
     backgroundColor: 'rgba(0, 0, 0, 0.9)',
   }
 
+  // Selects MODAL
   function Modal(e) {
     e.preventDefault(e);
     StopTimer()
@@ -129,12 +143,11 @@ const Gallery = () => {
               src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
 
             {/* NAVIGATION ARROWS/BUTTONS */}
-            <ModelBackGround>
+            <ModelBackGround ref={modalRef}>
               <div style={{ color: '#305972' }}>This is just to create space only, it blend w/ the background</div>
               <ModalImgDownload>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /> </ModalImgDownload>
               <br />
             </ModelBackGround>
-
             <Prev >
               <NavBtn onClick={() => selectedSlide(state.idx - 1)}>Prev</NavBtn>
             </Prev>
@@ -152,9 +165,9 @@ const Gallery = () => {
                 id="mainImage"
                 src={state.main[state.idx]}
                 key={state.main[state.idx]}
-                initial={{ opacity: 0.3 }}
+                initial={{ opacity: 0.5 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
                 style={{ width: '52.5%', minHeight: '350px' }}
                 alt="main image" />
             </LazyLoad>
@@ -178,7 +191,6 @@ export default Gallery;
 
 // TODO LIST
 // modal where you can click left and right...also stops timer, timer initiates again when out of modal mode
-// timer every 4 to 5 seconds change photos
 
 /* selected image borders */
 // .active {

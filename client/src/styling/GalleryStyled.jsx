@@ -24,6 +24,10 @@ export const Prev = styled.div`
   font-size: 40px;
   border-radius: 0 3px 3px 0;
   margin-left: 20px;
+
+  &:hover {
+    color: white;
+  }
 `
 export const Next = styled.div`
   display: inline;
@@ -48,6 +52,8 @@ export const NavBtn = styled.a`
 
   &:hover {
     cursor: pointer;
+    color: white;
+    background-color: #63a0c5;
   }
 `
 
