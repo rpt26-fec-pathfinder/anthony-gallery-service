@@ -17,9 +17,10 @@ import { BsDownload } from "react-icons/bs";
 const Gallery = () => {
   const [state, setState] = useState({
     title: 'Age of Empires II: Definitive Edition',
-    idx: 0,
     main: [],
     thumb: [],
+    idx: 0,
+    next: null,
     showModal: false,
     isOpen: false,
   })
@@ -45,47 +46,37 @@ const Gallery = () => {
     })
   }, [])
 
-
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", (e) => {
-  //     if (!modalRef.current.contains(e.target)) {
-  //       setState(prevState => {
-  //         return {
-  //           ...state,
-  //           showModal: false,
-  //         }
-  //       })
-  //     }
-  //   })
-  // })
-
   // Timer
-  function updateSlide() {
+  function updateSlide(index) {
     StopTimer();
 
     setTimeout(() => {
-      updateSlide();
-
       let thumbs = document.getElementsByClassName('thumb active')
-      let allThumbs = document.getElementsByClassName('thumb')
-
       for (let thumb of thumbs) {
         thumb.classList.remove('active');
       }
 
-      setState(prevState => {
+      let allThumbs = document.getElementsByClassName('thumb')
+      let next = index < state.thumb.length - 1 ? index + 1 : 0;
+      allThumbs[next].classList.add('active')
+
+      setState((prevState) => {
         return {
           ...state,
           idx: prevState.idx < prevState.thumb.length - 1 ? prevState.idx + 1 : 0,
+          next: index + 1,
         }
       })
 
+      updateSlide(next);
     }, 5250)
+
   }
 
   // Selects thumbnail
   function selectedSlide(index, e) {
     e.preventDefault();
+
     let thumbs = document.getElementsByClassName('thumb active')
 
     for (let thumb of thumbs) {
@@ -103,7 +94,7 @@ const Gallery = () => {
       page = index;
     }
 
-    setState(() => {
+    setState((prevState) => {
       return {
         ...state,
         idx: page,
@@ -111,7 +102,7 @@ const Gallery = () => {
     })
 
     if (state.showModal === false) {
-      updateSlide();
+      updateSlide(index);
     }
   }
 
