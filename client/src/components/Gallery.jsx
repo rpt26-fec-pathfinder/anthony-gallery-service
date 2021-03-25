@@ -60,7 +60,7 @@ const Gallery = () => {
       let next = index < state.thumb.length - 1 ? index + 1 : 0;
       allThumbs[next].classList.add('active')
 
-      setState((prevState) => {
+      setState(prevState => {
         return {
           ...state,
           idx: prevState.idx < prevState.thumb.length - 1 ? prevState.idx + 1 : 0,
@@ -96,7 +96,7 @@ const Gallery = () => {
       page = index;
     }
 
-    setState((prevState) => {
+    setState(prevState => {
       return {
         ...state,
         idx: page,
