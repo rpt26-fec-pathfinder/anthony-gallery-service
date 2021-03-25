@@ -203,4 +203,4 @@ const Gallery = () => {
 export default Gallery;
 
 // TODO LIST
-// be able to close modal
+// be able to close modal by clicking outside of it

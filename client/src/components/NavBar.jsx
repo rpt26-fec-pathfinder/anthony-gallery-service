@@ -10,7 +10,9 @@ const NavBar = () => {
       <br />
       <br />
       <Grid>
-        <Select >Your Store&nbsp;<IoMdArrowDropdown /></Select>
+        <Select
+
+        >Your Store&nbsp;<IoMdArrowDropdown /></Select>
         <Select >Browse&nbsp;<IoMdArrowDropdown /></Select>
         <Select >Points Store</Select>
         <Select>News</Select>
