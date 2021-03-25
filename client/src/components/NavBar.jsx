@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { FaSearch } from 'react-icons/fa';
-import { Nav, NavSelect, NavSelection, Input, Button } from '../styling/NavBarStyled.jsx';
+import { Grid, Select, SearchBar, Input, Button } from '../styling/NavBarStyled.jsx';
 
 
 const NavBar = () => {
@@ -9,28 +9,17 @@ const NavBar = () => {
     <div>
       <br />
       <br />
-      <Nav>
-        <NavSelection>
-          <NavSelect href="#">Your Store&nbsp;<IoMdArrowDropdown /></NavSelect>
-        </NavSelection>
-        <NavSelection>
-          <NavSelect href="#">Browse&nbsp;
-        <IoMdArrowDropdown /></NavSelect>
-        </NavSelection>
-        <NavSelection>
-          <NavSelect href="#">Points Shop</NavSelect>
-        </NavSelection>
-        <NavSelection>
-          <NavSelect href="#">News</NavSelect>
-        </NavSelection>
-        <NavSelection>
-          <NavSelect href="#">Steam Labs</NavSelect>
-        </NavSelection>
-        <span style={{ float: 'right' }} >
+      <Grid>
+        <Select >Your Store&nbsp;<IoMdArrowDropdown /></Select>
+        <Select >Browse&nbsp;<IoMdArrowDropdown /></Select>
+        <Select >Points Store</Select>
+        <Select>News</Select>
+        <Select >Steam Labs</Select>
+        <SearchBar style={{ float: 'right' }} >
           <Input type='text' placeholder='search the store' />
           <Button ><FaSearch /></Button>
-        </span>
-      </Nav>
+        </SearchBar>
+      </Grid>
       <br />
       <br />
     </div >

@@ -3,24 +3,26 @@ import NavBar from './NavBar.jsx';
 import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
-import StopTimer from '../helpers/stopTimer.jsx'
-import '../styling/WebkitScrollBar.css';
-import { Wrapper, Title, Container, Prev, Next, Row, Col, ThumbImg } from '../styling/GalleryStyled.jsx'
+import StopTimer from '../helpers/stopTimer.jsx';
+import '../styling/Gallery.css'
+import { Main, Wrapper, Title, Container, Prev, Next, Row, Col, ThumbImg, NavBtn, ScreenShots, ModelBackGround, ModalImgDownload } from '../styling/GalleryStyled.jsx'
 
 // npm installed packages
 import axios from 'axios';
 import LazyLoad from 'react-lazyload';
 import { motion } from "framer-motion";
+import { BsDownload } from "react-icons/bs";
 
-
+// STATE Data
 const Gallery = () => {
   const [state, setState] = useState({
     title: 'Age of Empires II: Definitive Edition',
-    idx: 0,
-    preSelectedImage: null,
-    showModal: false,
     main: [],
     thumb: [],
+    idx: 0,
+    next: null,
+    showModal: false,
+    isOpen: false,
   })
 
   useEffect(async () => {
@@ -42,43 +44,76 @@ const Gallery = () => {
         thumb,
       }
     })
-
-    // Timer();
   }, [])
 
-  // function Timer() {
-  //   setState((prevState) => {
-  //     return {
-  //       ...state,
-  //       idx: prevState.idx < state.main.length - 1 ? prevState.idx + 1 : 0,
-  //     }
-  //   })
-  //   setTimeout(Timer, 5250)
-  // };
+  // Timer
+  function updateSlide(index) {
+    StopTimer();
 
-  function selectedSlide(e, index) {
+    setTimeout(() => {
+      let thumbs = document.getElementsByClassName('thumb active')
+      for (let thumb of thumbs) {
+        thumb.classList.remove('active');
+      }
+
+      let allThumbs = document.getElementsByClassName('thumb')
+      let next = index < state.thumb.length - 1 ? index + 1 : 0;
+      allThumbs[next].classList.add('active')
+
+      setState((prevState) => {
+        return {
+          ...state,
+          idx: prevState.idx < prevState.thumb.length - 1 ? prevState.idx + 1 : 0,
+          next: index + 1,
+        }
+      })
+
+      updateSlide(next);
+    }, 5250)
+
+  }
+
+  // Selects thumbnail
+  function selectedSlide(index, e) {
     e.preventDefault();
-    // StopTimer();
-    // Timer();
-    // state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
-    // e.target.classList.add('active')
+
+    let thumbs = document.getElementsByClassName('thumb active')
+
+    for (let thumb of thumbs) {
+      thumb.classList.remove('active');
+    }
+
+    e.target.classList.add('active');
 
     let page;
     if (index < 0) {
       page = state.thumb.length - 1;
-
     } else if (index >= state.thumb.length) {
       page = 0;
-
     } else {
       page = index;
     }
 
-    setState(() => {
+    setState((prevState) => {
       return {
         ...state,
         idx: page,
-        preSelectedImage: e.target,
+      }
+    })
+
+    if (state.showModal === false) {
+      updateSlide(index);
+    }
+  }
+
+  // Selects MODAL
+  function Modal(e) {
+    e.preventDefault();
+    StopTimer()
+    setState(prevState => {
+      return {
+        ...state,
+        showModal: !prevState.showModal
       }
     })
   }
@@ -92,19 +127,7 @@ const Gallery = () => {
     width: '130%',
     height: '100%',
     overflow: 'auto',
-    backgroundColor: 'rgba(0, 0, 0, 0.94)',
-
-  }
-
-  // modal
-  function Modal(e) {
-    e.preventDefault(e);
-    setState(prevState => {
-      return {
-        ...state,
-        showModal: !prevState.showModal
-      }
-    })
+    backgroundColor: 'rgba(0, 0, 0, 0.9)',
   }
 
   return (
@@ -119,35 +142,56 @@ const Gallery = () => {
       <Container>
         {state.showModal ?
           <div style={modelOptions}>
-            <img id="myModal"
+            <img
               src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
 
             {/* NAVIGATION ARROWS/BUTTONS */}
-            <Prev onClick={(e) => selectedSlide(e, state.idx - 1)}>{String.fromCharCode(10094)}</Prev>
-            <Next onClick={(e) => selectedSlide(e, state.idx + 1)}>{String.fromCharCode(10095)}</Next>
+            <ModelBackGround>
+              <div style={{ color: '#305972' }}>This is just to create space only, it blend w/ the background</div>
+              <ModalImgDownload>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /> </ModalImgDownload>
+              <br />
+            </ModelBackGround>
+            <Prev >
+              <NavBtn onClick={(e) => selectedSlide(state.idx - 1, e)}>Prev</NavBtn>
+            </Prev>
+            {/* Pic out of How Many */}
+            <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
+            <Next >
+              <NavBtn onClick={(e) => selectedSlide(state.idx + 1, e)}>Next</NavBtn>
+            </Next>
           </div>
 
-          : <div style={{ cursor: 'pointer', marginTop: '-40px' }} >
+          : <Main >
             <LazyLoad height={350}>
               <motion.img
                 onClick={Modal}
                 id="mainImage"
                 src={state.main[state.idx]}
                 key={state.main[state.idx]}
-                initial={{ opacity: 0.3 }}
+                initial={{ opacity: 0.5 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
                 style={{ width: '52.5%', minHeight: '350px' }}
                 alt="main image" />
             </LazyLoad>
-          </div>}
+          </Main>}
 
         {/* THUMBNAIL IMAGES */}
         <Row>
           {state.thumb.map((image, index) => {
-            return <Col key={index} >
-              <ThumbImg onClick={(e) => selectedSlide(e, index)} src={image} alt="thumb image" />
-            </Col>
+            if (index === 0) {
+              return <Col key={index} >
+                <ThumbImg className="thumb active" onClick={(e) => selectedSlide(index, e)} src={image} alt="thumb image" />
+              </Col>
+
+            } else {
+              return <Col key={index} >
+                <ThumbImg className="thumb" onClick={(e) => selectedSlide(index, e)} src={image} alt="thumb image" />
+              </Col>
+            }
+            // return <Col key={index} >
+            //   <ThumbImg className="thumb" onClick={(e) => selectedSlide(index, e)} src={image} alt="thumb image" />
+            // </Col>
           })}
         </Row>
       </Container>
@@ -159,10 +203,4 @@ const Gallery = () => {
 export default Gallery;
 
 // TODO LIST
-// modal where you can click left and right...also stops timer, timer initiates again when out of modal mode
-// timer every 4 to 5 seconds change photos
-
-/* selected image borders */
-// .active {
-//   border: 2.5px solid #d1d0c5;
-// }
+// be able to close modal
