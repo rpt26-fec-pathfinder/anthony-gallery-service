@@ -44,9 +44,12 @@ export const Select = styled.a`
   font-size: 14px;
   color: #e5e4dc;
   background-color: #3f7da1;
+  transition: 0.4s;
 
   &:hover {
+    cursor: pointer;
     color: black;
+    background-color: #c0cbd1;
   }
 `
 
@@ -55,8 +58,3 @@ export const SearchBar = styled.span`
   background-color: #3f7da1;
 `
 
-export const NavSelection = styled.span`
-  font-size: 14px;
-  padding-left: 10px;
-  padding-right: 10px;
-`

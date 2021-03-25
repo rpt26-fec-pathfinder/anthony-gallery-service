@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Wrapper = styled.div`
   margin-left: 175px;
   font-family: Noto Sans, sans-serif;
@@ -12,64 +13,6 @@ export const Title = styled.h1`
 `
 export const Container = styled.div`
   margin-top: -20px;
-`
-export const Prev = styled.div`
-  display: inline;
-  position: absolute;
-  top: 35%;
-  width: 50%;
-  margin-top: 300px;
-  color: white;
-  font-weight: bold;
-  font-size: 40px;
-  border-radius: 0 3px 3px 0;
-  margin-left: 20px;
-
-  &:hover {
-    color: white;
-  }
-`
-export const Next = styled.div`
-  display: inline;
-  position: absolute;
-  top: 35%;
-  width: 20%;
-  margin-top: 300px;
-  color: white;
-  font-weight: bold;
-  font-size: 40px;
-  border-radius: 0 3px 3px 0;
-  margin-left: 850px;
-`
-
-export const NavBtn = styled.a`
-  color: #54a5d4;
-  background-color: #46708a;
-  font-size: 15px;
-  padding: 0px 15px;
-  border-radius: 1.5px;
-  margin-left: -20px;
-
-  &:hover {
-    cursor: pointer;
-    color: white;
-    background-color: #63a0c5;
-  }
-`
-
-export const ModelBackGround = styled.div`
-  color: white;
-  font-size: 11.5px;
-  background-color: #305972;
-  width: 913px;
-  margin-top: -540px;
-  margin-left:-10px;
-  padding-bottom: 540px;
-  border-radius: 5px;
-
-  &:hover {
-    cursor: default;
-  }
 `
 
 export const Row = styled.div`
@@ -91,6 +34,7 @@ export const Col = styled.div`
   padding: 2px;
   margin-bottom: 5px;
 `
+
 export const ThumbImg = styled.img`
   padding: 1px;
 `
@@ -98,11 +42,7 @@ export const ThumbImg = styled.img`
 export const ScreenShots = styled.div`
   color: white;
   font-size: 11.5px;
-  margin: -25px 0px 0px 390px;
-
-  &:hover {
-    cursor: default;
-  }
+  margin: -20px 0px 0px 390px;
 `
 
 export const ModalImgDownload = styled.a`
@@ -117,5 +57,65 @@ export const Main = styled.div`
 
  &:hover {
     cursor: pointer;
+  }
+`
+
+export const Blackout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  position: fixed;
+  justify-items: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+`
+
+export const ModalBackGround = styled.div`
+  color: white;
+  font-size: 11.5px;
+  background-color: #305972;
+  width: 885px;
+  padding: 5px 7px 5px 7px;
+  margin-top: 60px;
+  margin-bottom: 70px;
+  border-radius: 5px;
+`
+
+export const Image = styled.img`
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: -15px;
+`
+
+export const PrevBtn = styled.a`
+  color: #54a5d4;
+  background-color: #46708a;
+  font-size: 15px;
+  padding: 0px 15px;
+  border-radius: 1.5px;
+
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #63a0c5;
+  }
+`
+
+export const NextBtn = styled.a`
+position: relative;
+  float: right;
+  color: #54a5d4;
+  background-color: #46708a;
+  font-size: 15px;
+  padding: 0px 15px;
+  border-radius: 1.5px;
+  margin-top: -16px;
+
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #63a0c5;
   }
 `

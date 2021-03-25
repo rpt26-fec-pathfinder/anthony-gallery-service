@@ -10,14 +10,13 @@ const NavBar = () => {
       <br />
       <br />
       <Grid>
-        <Select >Your Store&nbsp;<IoMdArrowDropdown /></Select>
+        <Select>Your Store&nbsp;<IoMdArrowDropdown /></Select>
         <Select >Browse&nbsp;<IoMdArrowDropdown /></Select>
         <Select >Points Store</Select>
         <Select>News</Select>
         <Select >Steam Labs</Select>
         <SearchBar style={{ float: 'right' }} >
-          <Input type='text' placeholder='search the store' />
-          <Button ><FaSearch /></Button>
+          <Input type='text' placeholder='search the store' /><Button ><FaSearch /></Button>
         </SearchBar>
       </Grid>
       <br />

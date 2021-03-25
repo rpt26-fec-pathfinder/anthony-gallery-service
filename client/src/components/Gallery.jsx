@@ -5,7 +5,7 @@ import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
 import StopTimer from '../helpers/stopTimer.jsx';
 import '../styling/Gallery.css'
-import { Main, Wrapper, Title, Container, Prev, Next, Row, Col, ThumbImg, NavBtn, ScreenShots, ModelBackGround, ModalImgDownload } from '../styling/GalleryStyled.jsx'
+import { Image, Blackout, PrevBtn, NextBtn, Main, Wrapper, Title, Container, Row, Col, ThumbImg, ScreenShots, ModalBackGround, ModalImgDownload } from '../styling/GalleryStyled.jsx'
 
 // npm installed packages
 import axios from 'axios';
@@ -83,7 +83,9 @@ const Gallery = () => {
       thumb.classList.remove('active');
     }
 
-    e.target.classList.add('active');
+    if (e.target.classList.contains('thumb')) {
+      e.target.classList.add('active');
+    }
 
     let page;
     if (index < 0) {
@@ -118,18 +120,6 @@ const Gallery = () => {
     })
   }
 
-  const modelOptions = {
-    position: 'fixed',
-    paddingTop: '90px',
-    paddingLeft: '200px',
-    left: '0',
-    top: '0',
-    width: '130%',
-    height: '100%',
-    overflow: 'auto',
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
-  }
-
   return (
     <Wrapper>
       <NavBar />
@@ -141,25 +131,23 @@ const Gallery = () => {
       {/* MAIN IMAGES & MODAL */}
       <Container>
         {state.showModal ?
-          <div style={modelOptions}>
-            <img
-              src={state.main[state.idx]} style={{ width: '52.5%' }} alt="main image" />
+          <Blackout>
+            <ModalBackGround>
+              <ModalImgDownload>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></ModalImgDownload>
 
-            {/* NAVIGATION ARROWS/BUTTONS */}
-            <ModelBackGround>
-              <div style={{ color: '#305972' }}>This is just to create space only, it blend w/ the background</div>
-              <ModalImgDownload>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /> </ModalImgDownload>
+              {/* Modal Image */}
+              <Image src={state.main[state.idx]} alt="main image" />
               <br />
-            </ModelBackGround>
-            <Prev >
-              <NavBtn onClick={(e) => selectedSlide(state.idx - 1, e)}>Prev</NavBtn>
-            </Prev>
-            {/* Pic out of How Many */}
-            <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
-            <Next >
-              <NavBtn onClick={(e) => selectedSlide(state.idx + 1, e)}>Next</NavBtn>
-            </Next>
-          </div>
+              <br />
+              <PrevBtn onClick={(e) => selectedSlide(state.idx - 1, e)}>Prev</PrevBtn>
+
+              {/* Pic out of How Many */}
+              <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
+
+              {/* Navigation */}
+              <NextBtn onClick={(e) => selectedSlide(state.idx + 1, e)}>Next</NextBtn>
+            </ModalBackGround>
+          </Blackout>
 
           : <Main >
             <LazyLoad height={350}>
@@ -203,4 +191,5 @@ const Gallery = () => {
 export default Gallery;
 
 // TODO LIST
-// be able to close modal
+// be able to close modal by clicking outside of it
+// fix bug when button is click it highlights as "active"
