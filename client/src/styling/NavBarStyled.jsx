@@ -51,7 +51,6 @@ export const Select = styled.a`
 `
 
 export const SearchBar = styled.span`
-
   margin-right: 175px;
   background-color: #3f7da1;
 `

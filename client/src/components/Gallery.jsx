@@ -20,7 +20,6 @@ const Gallery = () => {
     idx: 0,
     main: [],
     thumb: [],
-    preSelectedImage: null,
     showModal: false,
     isOpen: false,
   })
@@ -66,22 +65,34 @@ const Gallery = () => {
 
     setTimeout(() => {
       updateSlide();
+
+      let thumbs = document.getElementsByClassName('thumb active')
+      let allThumbs = document.getElementsByClassName('thumb')
+
+      for (let thumb of thumbs) {
+        thumb.classList.remove('active');
+      }
+
       setState(prevState => {
         return {
           ...state,
           idx: prevState.idx < prevState.thumb.length - 1 ? prevState.idx + 1 : 0,
         }
       })
+
     }, 5250)
   }
 
   // Selects thumbnail
   function selectedSlide(index, e) {
     e.preventDefault();
-    state.preSelectedImage !== null ? state.preSelectedImage.classList.remove('active') : null;
-    e.target.classList.add('active')
     let thumbs = document.getElementsByClassName('thumb active')
-    console.log(thumbs)
+
+    for (let thumb of thumbs) {
+      thumb.classList.remove('active');
+    }
+
+    e.target.classList.add('active');
 
     let page;
     if (index < 0) {
@@ -96,7 +107,6 @@ const Gallery = () => {
       return {
         ...state,
         idx: page,
-        // preSelectedImage: e.target,
       }
     })
 
