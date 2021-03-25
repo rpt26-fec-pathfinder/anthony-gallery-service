@@ -204,9 +204,3 @@ export default Gallery;
 
 // TODO LIST
 // be able to close modal
-// highlight borders
-
-/* selected image borders */
-// .active {
-//   border: 2.5px solid #d1d0c5;
-// }
