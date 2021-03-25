@@ -42,7 +42,8 @@ export const ThumbImg = styled.img`
 export const ScreenShots = styled.div`
   color: white;
   font-size: 11.5px;
-  margin: -20px 0px 0px 390px;
+  text-align: center;
+  margin-top: -18px;
 `
 
 export const ModalImgDownload = styled.a`
@@ -111,7 +112,7 @@ position: relative;
   font-size: 15px;
   padding: 0px 15px;
   border-radius: 1.5px;
-  margin-top: -16px;
+  margin-top: -19px;
 
   &:hover {
     cursor: pointer;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar.jsx';
 import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
@@ -70,7 +70,6 @@ const Gallery = () => {
 
       updateSlide(next);
     }, 5250)
-
   }
 
   // Selects thumbnail
@@ -108,10 +107,11 @@ const Gallery = () => {
     }
   }
 
-  // Selects MODAL
+  // shows Modal
   function Modal(e) {
     e.preventDefault();
-    StopTimer()
+    StopTimer();
+
     setState(prevState => {
       return {
         ...state,
@@ -130,7 +130,7 @@ const Gallery = () => {
 
       {/* MAIN IMAGES & MODAL */}
       <Container>
-        {state.showModal ?
+        {!state.showModal ?
           <Blackout>
             <ModalBackGround>
               <ModalImgDownload>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></ModalImgDownload>
@@ -192,4 +192,3 @@ export default Gallery;
 
 // TODO LIST
 // be able to close modal by clicking outside of it
-// fix bug when button is click it highlights as "active"
