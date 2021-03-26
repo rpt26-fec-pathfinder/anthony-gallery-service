@@ -4,7 +4,7 @@ import { AppContent } from '../styling/AppStyled.jsx'
 
 const App = () => {
   return (
-    <AppContent>
+    <AppContent >
       <Gallery />
     </AppContent>
   );

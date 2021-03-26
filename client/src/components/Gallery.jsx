@@ -50,6 +50,11 @@ const Gallery = () => {
     })
   }, [])
 
+  // locks scrollbar when isModal is true
+  useEffect(() => {
+    state.isModal ? document.body.style.position = 'fixed' : null;
+  }, [state.isModal]);
+
   // Timer
   function updateSlide(index) {
     StopTimer();
@@ -135,7 +140,7 @@ const Gallery = () => {
       <br />
 
       {/* MAIN IMAGES */}
-      <Container style={!state.isModal ? { position: 'fixed' } : { position: 'static' }}>
+      <Container>
         {<Main >
           <LazyLoad height={350}>
             <motion.img
