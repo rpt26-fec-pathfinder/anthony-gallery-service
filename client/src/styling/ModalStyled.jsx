@@ -24,7 +24,7 @@ export const OuterModal = styled.div`
   border-radius: 5px;
 `
 
-export const DownloadPrompt = styled.a`
+export const Download = styled.a`
 &:hover {
     cursor: pointer;
     color: #54a5d4;

@@ -11,7 +11,7 @@ import StopTimer from '../helpers/stopTimer.jsx';
 // stylings
 import '../styling/Gallery.css'
 import { Title, ThumbImg, Wrapper, Main, Container, Row, Col } from '../styling/GalleryStyled.jsx';
-import { Background, OuterModal, DownloadPrompt, ModalImage, PrevBtn, NextBtn, ScreenShots } from '../styling/ModalStyled.jsx'
+import { Background, OuterModal, Download, ModalImage, PrevBtn, NextBtn, ScreenShots } from '../styling/ModalStyled.jsx'
 
 // npm installed packages
 import axios from 'axios';
@@ -155,7 +155,7 @@ const Gallery = () => {
         <Modal open={state.isModal} close={() => OpenModel()} >
           <Background>
             <OuterModal onClick={e => e.stopPropagation()}>
-              <DownloadPrompt>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></DownloadPrompt>
+              <Download>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></Download>
 
               {/* Modal Image */}
               <ModalImage src={state.main[state.idx]} alt="main image" />
@@ -192,3 +192,6 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
+// TODO
+// -responsive page layout in widescreen
