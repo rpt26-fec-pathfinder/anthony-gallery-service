@@ -135,7 +135,7 @@ const Gallery = () => {
       <br />
 
       {/* MAIN IMAGES */}
-      <Container>
+      <Container style={!state.isModal ? { position: 'fixed' } : { position: 'static' }}>
         {<Main >
           <LazyLoad height={350}>
             <motion.img

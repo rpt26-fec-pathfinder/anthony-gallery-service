@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 
 export const Background = styled.div`
+  position: fixed;
   display: grid;
   grid-template-columns: 1fr;
-  position: fixed;
   justify-items: center;
   left: 0;
   right: 0;

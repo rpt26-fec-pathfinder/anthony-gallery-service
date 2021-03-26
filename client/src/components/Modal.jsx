@@ -3,7 +3,7 @@ import React from 'react';
 
 const Modal = ({ children, open, close }) => {
   return (
-    open &&
+    !open &&
     <div onClick={() => close()}>
       <div >
         {children}
