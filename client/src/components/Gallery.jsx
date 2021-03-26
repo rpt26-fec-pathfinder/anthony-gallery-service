@@ -146,7 +146,7 @@ const Gallery = () => {
               initial={{ opacity: 0.5 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              style={{ width: '52.5%', minHeight: '350px' }}
+              style={{ width: '54.5%', minHeight: '350px' }} // 52.5 before?!
               alt="main image" />
           </LazyLoad>
         </Main>}

@@ -34,7 +34,7 @@ export const Row = styled.div`
   white-space: nowrap;
   display: flex;
   cursor: pointer;
-  max-width: 589px;
+  max-width: 610px; // 589 before?!??!
 
   &:hover {
     cursor: pointer;
