@@ -11,7 +11,7 @@ import StopTimer from '../helpers/stopTimer.jsx';
 // stylings
 import '../styling/Gallery.css'
 import { Title, ThumbImg, Wrapper, Main, Container, Row, Col } from '../styling/GalleryStyled.jsx';
-import { Background, OuterModal, DownloadPrompt, ModalImage, PrevBtn, NextBtn, ScreenShots } from '../styling/ModalStyled.jsx'
+import { Background, OuterModal, Download, ModalImage, PrevBtn, NextBtn, ScreenShots } from '../styling/ModalStyled.jsx'
 
 // npm installed packages
 import axios from 'axios';
@@ -49,6 +49,11 @@ const Gallery = () => {
       thumb,
     })
   }, [])
+
+  // locks scrollbar when isModal is true
+  useEffect(() => {
+    state.isModal ? document.body.style.position = 'fixed' : null;
+  }, [state.isModal]);
 
   // Timer
   function updateSlide(index) {
@@ -99,11 +104,9 @@ const Gallery = () => {
       page = index;
     }
 
-    setState(prevState => {
-      return {
-        ...state,
-        idx: page,
-      }
+    setState({
+      ...state,
+      idx: page,
     })
 
     if (state.isModal === false) {
@@ -113,14 +116,19 @@ const Gallery = () => {
 
   // show Modal Func
   function OpenModel() {
-    StopTimer();
+    if (state.isModal) {
+      let allThumbs = document.getElementsByClassName('thumb');
+      allThumbs[state.idx].classList.add('active')
+    }
 
     setState(prevState => {
       return {
         ...state,
-        isModal: !prevState.isModal
+        isModal: !prevState.isModal,
       }
     })
+
+    StopTimer();
   }
 
   return (
@@ -143,7 +151,7 @@ const Gallery = () => {
               initial={{ opacity: 0.5 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              style={{ width: '52.5%', minHeight: '350px' }}
+              style={{ width: '54.5%', minHeight: '350px' }} // 52.5 before?!
               alt="main image" />
           </LazyLoad>
         </Main>}
@@ -152,18 +160,17 @@ const Gallery = () => {
         <Modal open={state.isModal} close={() => OpenModel()} >
           <Background>
             <OuterModal onClick={e => e.stopPropagation()}>
-              <DownloadPrompt>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></DownloadPrompt>
+              <Download>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></Download>
+
               {/* Modal Image */}
               <ModalImage src={state.main[state.idx]} alt="main image" />
               <br />
               <br />
-              <PrevBtn onClick={(e) => selectedSlide(state.idx - 1, e)}>Prev</PrevBtn>
 
-              {/* Pic out of How Many */}
+              {/* NAVIGATION / How Many Message */}
+              <PrevBtn onClick={e => selectedSlide(state.idx - 1, e)}>Prev</PrevBtn>
               <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
-
-              {/* Navigation */}
-              <NextBtn onClick={(e) => selectedSlide(state.idx + 1, e)}>Next</NextBtn>
+              <NextBtn onClick={e => selectedSlide(state.idx + 1, e)}>Next</NextBtn>
             </OuterModal>
           </Background>
         </Modal>
@@ -191,5 +198,5 @@ const Gallery = () => {
 
 export default Gallery;
 
-// TODO LIST
-// be able to close modal by clicking outside of it
+// TODO
+// -responsive page layout in widescreen

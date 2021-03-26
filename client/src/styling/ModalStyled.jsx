@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 
 export const Background = styled.div`
+  position: fixed;
   display: grid;
   grid-template-columns: 1fr;
-  position: fixed;
   justify-items: center;
   left: 0;
   right: 0;
@@ -20,11 +20,11 @@ export const OuterModal = styled.div`
   width: 885px;
   padding: 5px 7px 5px 7px;
   margin-top: 60px;
-  margin-bottom: 70px;
+  margin-bottom: 300px;
   border-radius: 5px;
 `
 
-export const DownloadPrompt = styled.a`
+export const Download = styled.a`
 &:hover {
     cursor: pointer;
     color: #54a5d4;
