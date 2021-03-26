@@ -69,25 +69,13 @@ const Gallery = () => {
       let next = index < state.thumb.length - 1 ? index + 1 : 0;
       allThumbs[next].classList.add('active')
 
-      // scrolls into view of the selected
 
-      for (let i = 0; i < state.thumb.length; i += 5) {
-        if (next === 0) {
-          allThumbs[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else if (next === i) {
-          allThumbs[next + 4].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+      if (next < state.thumb.length - 2) {
+        allThumbs[next + 2].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
-
-      // if (next === 0) {
-      //   allThumbs[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      // }
-      // if (next === 5) {
-      //   allThumbs[9].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      // }
-      // if (next === 10) {
-      //   allThumbs[state.thumb.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      // }
+      if (next === 0) {
+        allThumbs[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
 
       setState(prevState => {
         return {
