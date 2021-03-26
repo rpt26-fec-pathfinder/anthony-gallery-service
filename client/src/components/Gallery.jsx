@@ -52,7 +52,7 @@ const Gallery = () => {
 
   // locks scrollbar when isModal is true
   useEffect(() => {
-    state.isModal ? document.body.style.position = 'fixed' : null;
+    state.isModal ? document.body.style.position = 'fixed' : document.body.style.position = 'unset';
   }, [state.isModal]);
 
   // Timer
