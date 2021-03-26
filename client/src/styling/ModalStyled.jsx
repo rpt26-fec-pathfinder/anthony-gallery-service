@@ -20,7 +20,7 @@ export const OuterModal = styled.div`
   width: 885px;
   padding: 5px 7px 5px 7px;
   margin-top: 60px;
-  margin-bottom: 70px;
+  margin-bottom: 300px;
   border-radius: 5px;
 `
 

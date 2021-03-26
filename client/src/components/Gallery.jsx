@@ -158,16 +158,15 @@ const Gallery = () => {
           <Background>
             <OuterModal onClick={e => e.stopPropagation()}>
               <DownloadPrompt>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></DownloadPrompt>
+
               {/* Modal Image */}
               <ModalImage src={state.main[state.idx]} alt="main image" />
               <br />
               <br />
+
+              {/* NAVIGATION / How Many Message */}
               <PrevBtn onClick={(e) => selectedSlide(state.idx - 1, e)}>Prev</PrevBtn>
-
-              {/* Pic out of How Many */}
               <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
-
-              {/* Navigation */}
               <NextBtn onClick={(e) => selectedSlide(state.idx + 1, e)}>Next</NextBtn>
             </OuterModal>
           </Background>
@@ -195,6 +194,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
-// TODO LIST
-// be able to close modal by clicking outside of it
