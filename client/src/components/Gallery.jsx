@@ -69,6 +69,10 @@ const Gallery = () => {
       let next = index < state.thumb.length - 1 ? index + 1 : 0;
       allThumbs[next].classList.add('active')
 
+      // scrolls into view of the selected
+
+      allThumbs[9].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
       setState(prevState => {
         return {
           ...state,
@@ -131,6 +135,8 @@ const Gallery = () => {
     StopTimer();
   }
 
+
+
   return (
     <Wrapper>
       <NavBar />
@@ -176,7 +182,7 @@ const Gallery = () => {
         </Modal>
 
         {/* THUMBNAIL IMAGES */}
-        <Row>
+        <Row id="row">
           {state.thumb.map((image, index) => {
             if (index === 0) {
               return <Col key={index} >
@@ -200,3 +206,4 @@ export default Gallery;
 
 // TODO
 // -responsive page layout in widescreen
+// scrollbar moves to the location of the highlighted pic
