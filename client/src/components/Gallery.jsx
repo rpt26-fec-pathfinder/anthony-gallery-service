@@ -113,14 +113,19 @@ const Gallery = () => {
 
   // show Modal Func
   function OpenModel() {
-    StopTimer();
+    if (state.isModal) {
+      let allThumbs = document.getElementsByClassName('thumb');
+      allThumbs[state.idx].classList.add('active')
+    }
 
     setState(prevState => {
       return {
         ...state,
-        isModal: !prevState.isModal
+        isModal: !prevState.isModal,
       }
     })
+
+    StopTimer();
   }
 
   return (
