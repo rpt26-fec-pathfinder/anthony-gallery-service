@@ -163,9 +163,9 @@ const Gallery = () => {
               <br />
 
               {/* NAVIGATION / How Many Message */}
-              <PrevBtn onClick={(e) => selectedSlide(state.idx - 1, e)}>Prev</PrevBtn>
+              <PrevBtn onClick={e => selectedSlide(state.idx - 1, e)}>Prev</PrevBtn>
               <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
-              <NextBtn onClick={(e) => selectedSlide(state.idx + 1, e)}>Next</NextBtn>
+              <NextBtn onClick={e => selectedSlide(state.idx + 1, e)}>Next</NextBtn>
             </OuterModal>
           </Background>
         </Modal>
