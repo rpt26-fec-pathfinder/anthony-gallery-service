@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
+
+// other components
 import NavBar from './NavBar.jsx';
 import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
+import Modal from './Modal.jsx'
 import StopTimer from '../helpers/stopTimer.jsx';
+
+// stylings
 import '../styling/Gallery.css'
-import { Image, Blackout, PrevBtn, NextBtn, Main, Wrapper, Title, Container, Row, Col, ThumbImg, ScreenShots, ModalBackGround, ModalImgDownload } from '../styling/GalleryStyled.jsx'
+import { Title, ThumbImg, Wrapper, Main, Container, Row, Col } from '../styling/GalleryStyled.jsx';
+import { Background, OuterModal, DownloadPrompt, ModalImage, PrevBtn, NextBtn, ScreenShots } from '../styling/ModalStyled.jsx'
 
 // npm installed packages
 import axios from 'axios';
@@ -13,7 +19,8 @@ import LazyLoad from 'react-lazyload';
 import { motion } from "framer-motion";
 import { BsDownload } from "react-icons/bs";
 
-// STATE Data
+
+
 const Gallery = () => {
   const [state, setState] = useState({
     title: 'Age of Empires II: Definitive Edition',
@@ -21,8 +28,7 @@ const Gallery = () => {
     thumb: [],
     idx: 0,
     next: null,
-    showModal: false,
-    isOpen: false,
+    isModal: false,
   })
 
   useEffect(async () => {
@@ -36,13 +42,11 @@ const Gallery = () => {
 
     let thumb = ["https://steam-fec.s3.amazonaws.com/steam1/thumb-1-1.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-2.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-3.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-4.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-5.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-6.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-7.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-8.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-9.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-10.jpg", "https://steam-fec.s3.amazonaws.com/steam1/thumb-1-11.jpg"]
 
-    await setState(() => {
-      return {
-        ...state,
-        // title: metaRes.data.name,
-        main,
-        thumb,
-      }
+    await setState({
+      ...state,
+      // title: metaRes.data.name,
+      main,
+      thumb,
     })
   }, [])
 
@@ -102,20 +106,19 @@ const Gallery = () => {
       }
     })
 
-    if (state.showModal === false) {
+    if (state.isModal === false) {
       updateSlide(index);
     }
   }
 
-  // shows Modal
-  function Modal(e) {
-    e.preventDefault();
+  // show Modal Func
+  function OpenModel() {
     StopTimer();
 
     setState(prevState => {
       return {
         ...state,
-        showModal: !prevState.showModal
+        isModal: !prevState.isModal
       }
     })
   }
@@ -128,15 +131,35 @@ const Gallery = () => {
       <HubButton />
       <br />
 
-      {/* MAIN IMAGES & MODAL */}
+      {/* MAIN IMAGES */}
       <Container>
-        {!state.showModal ?
-          <Blackout>
-            <ModalBackGround>
-              <ModalImgDownload>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></ModalImgDownload>
+        {<Main >
+          <LazyLoad height={350}>
+            <motion.img
+              onClick={() => OpenModel()}
+              id="mainImage"
+              src={state.main[state.idx]}
+              key={state.main[state.idx]}
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              style={{ width: '52.5%', minHeight: '350px' }}
+              alt="main image" />
+          </LazyLoad>
+        </Main>}
 
+        {/* MODAL */}
+        <Modal open={state.isModal} close={() => setState(prevState => {
+          return {
+            ...state,
+            isModal: false,
+          }
+        })} >
+          <Background>
+            <OuterModal>
+              <DownloadPrompt>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></DownloadPrompt>
               {/* Modal Image */}
-              <Image src={state.main[state.idx]} alt="main image" />
+              <ModalImage src={state.main[state.idx]} alt="main image" />
               <br />
               <br />
               <PrevBtn onClick={(e) => selectedSlide(state.idx - 1, e)}>Prev</PrevBtn>
@@ -146,40 +169,23 @@ const Gallery = () => {
 
               {/* Navigation */}
               <NextBtn onClick={(e) => selectedSlide(state.idx + 1, e)}>Next</NextBtn>
-            </ModalBackGround>
-          </Blackout>
-
-          : <Main >
-            <LazyLoad height={350}>
-              <motion.img
-                onClick={Modal}
-                id="mainImage"
-                src={state.main[state.idx]}
-                key={state.main[state.idx]}
-                initial={{ opacity: 0.5 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                style={{ width: '52.5%', minHeight: '350px' }}
-                alt="main image" />
-            </LazyLoad>
-          </Main>}
+            </OuterModal>
+          </Background>
+        </Modal>
 
         {/* THUMBNAIL IMAGES */}
         <Row>
           {state.thumb.map((image, index) => {
             if (index === 0) {
               return <Col key={index} >
-                <ThumbImg className="thumb active" onClick={(e) => selectedSlide(index, e)} src={image} alt="thumb image" />
+                <ThumbImg className="thumb active" onClick={e => selectedSlide(index, e)} src={image} alt="thumb image" />
               </Col>
 
             } else {
               return <Col key={index} >
-                <ThumbImg className="thumb" onClick={(e) => selectedSlide(index, e)} src={image} alt="thumb image" />
+                <ThumbImg className="thumb" onClick={e => selectedSlide(index, e)} src={image} alt="thumb image" />
               </Col>
             }
-            // return <Col key={index} >
-            //   <ThumbImg className="thumb" onClick={(e) => selectedSlide(index, e)} src={image} alt="thumb image" />
-            // </Col>
           })}
         </Row>
       </Container>
