@@ -5,7 +5,7 @@ const Modal = ({ children, open, close }) => {
   return (
     open &&
     <div onClick={() => close()}>
-      <div onClick={e => e.stopPropagation()}>
+      <div >
         {children}
       </div>
     </div>
