@@ -69,10 +69,14 @@ const Gallery = () => {
       let next = index < state.thumb.length - 1 ? index + 1 : 0;
       allThumbs[next].classList.add('active')
 
+      if (next === state.thumb.length - 2 || next === state.thumb.length - 1) {
+        allThumbs[next].scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
 
       if (next < state.thumb.length - 2) {
         allThumbs[next + 2].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
+
       if (next === 0) {
         allThumbs[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
