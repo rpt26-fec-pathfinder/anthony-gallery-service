@@ -29,12 +29,12 @@ export const Container = styled.div`
 `
 
 export const Row = styled.div`
- display: inline;
-  overflow-x: auto;
+  display: inline;
+  overflow-x: scroll;
   white-space: nowrap;
   display: flex;
   cursor: pointer;
-  max-width: 610px; // 589 before?!??!
+  max-width: 613px; // 589 before?!??!
 
   &:hover {
     cursor: pointer;

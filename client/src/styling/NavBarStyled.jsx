@@ -8,7 +8,7 @@ export const Grid = styled.div`
 
 export const Input = styled.input`
   background-color:#305d8a;
-  margin-left: 175px;
+  margin-left: 180px;
   border: thin solid black;
   border-radius: 3px;
   margin-top: 2.4px;

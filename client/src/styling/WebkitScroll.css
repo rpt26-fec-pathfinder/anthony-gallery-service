@@ -20,7 +20,6 @@
   background-color: #3d6c8d;
 }
 
-
-::-webkit-scrollbar-track-piece {
+::-webkit-scrollbar-track-piece, ::-webkit-scrollbar-corner {
   background-color: #1b2838;
 }

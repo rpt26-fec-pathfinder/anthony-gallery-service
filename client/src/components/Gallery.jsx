@@ -52,7 +52,7 @@ const Gallery = () => {
 
   // locks scrollbar when isModal is true
   useEffect(() => {
-    state.isModal ? document.body.style.position = 'fixed' : null;
+    state.isModal ? document.body.style.position = 'fixed' : document.body.style.position = 'unset';
   }, [state.isModal]);
 
   // Timer
@@ -68,6 +68,14 @@ const Gallery = () => {
       let allThumbs = document.getElementsByClassName('thumb')
       let next = index < state.thumb.length - 1 ? index + 1 : 0;
       allThumbs[next].classList.add('active')
+
+
+      if (next < state.thumb.length - 2) {
+        allThumbs[next + 2].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      if (next === 0) {
+        allThumbs[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
 
       setState(prevState => {
         return {
@@ -131,6 +139,8 @@ const Gallery = () => {
     StopTimer();
   }
 
+
+
   return (
     <Wrapper>
       <NavBar />
@@ -176,7 +186,7 @@ const Gallery = () => {
         </Modal>
 
         {/* THUMBNAIL IMAGES */}
-        <Row>
+        <Row id="row">
           {state.thumb.map((image, index) => {
             if (index === 0) {
               return <Col key={index} >
@@ -200,3 +210,4 @@ export default Gallery;
 
 // TODO
 // -responsive page layout in widescreen
+// scrollbar moves to the location of the highlighted pic

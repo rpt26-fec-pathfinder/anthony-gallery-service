@@ -10,7 +10,7 @@ export const Background = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.9);
 `
 
 export const OuterModal = styled.div`
