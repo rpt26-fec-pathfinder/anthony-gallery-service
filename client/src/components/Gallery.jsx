@@ -151,10 +151,10 @@ const Gallery = () => {
         {/* MODAL */}
         <Modal open={state.isModal} close={() => OpenModel()} >
           <Background>
-            <OuterModal>
+            <OuterModal onClick={e => e.stopPropagation()}>
               <DownloadPrompt>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></DownloadPrompt>
               {/* Modal Image */}
-              <ModalImage onClick={e => e.stopPropagation()} src={state.main[state.idx]} alt="main image" />
+              <ModalImage src={state.main[state.idx]} alt="main image" />
               <br />
               <br />
               <PrevBtn onClick={(e) => selectedSlide(state.idx - 1, e)}>Prev</PrevBtn>
