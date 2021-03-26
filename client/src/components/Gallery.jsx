@@ -99,11 +99,9 @@ const Gallery = () => {
       page = index;
     }
 
-    setState(prevState => {
-      return {
-        ...state,
-        idx: page,
-      }
+    setState({
+      ...state,
+      idx: page,
     })
 
     if (state.isModal === false) {
