@@ -71,7 +71,23 @@ const Gallery = () => {
 
       // scrolls into view of the selected
 
-      allThumbs[9].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      for (let i = 0; i < state.thumb.length; i += 5) {
+        if (next === 0) {
+          allThumbs[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else if (next === i) {
+          allThumbs[next + 4].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+
+      // if (next === 0) {
+      //   allThumbs[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // }
+      // if (next === 5) {
+      //   allThumbs[9].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // }
+      // if (next === 10) {
+      //   allThumbs[state.thumb.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // }
 
       setState(prevState => {
         return {
