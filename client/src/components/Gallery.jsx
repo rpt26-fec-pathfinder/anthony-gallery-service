@@ -11,7 +11,7 @@ import StopTimer from '../helpers/stopTimer.jsx';
 // stylings
 import '../styling/Gallery.css'
 import { Title, ThumbImg, Wrapper, Main, Container, Row, Col } from '../styling/GalleryStyled.jsx';
-import { Background, OuterModal, Download, ModalImage, PrevBtn, NextBtn, ScreenShots } from '../styling/ModalStyled.jsx'
+import { Background, OuterModal, Download, ModalImage, ScreenShots, ModalBottomGrid, Btn } from '../styling/ModalStyled.jsx'
 
 // npm installed packages
 import axios from 'axios';
@@ -177,9 +177,11 @@ const Gallery = () => {
               <br />
 
               {/* NAVIGATION / How Many Message */}
-              <PrevBtn onClick={e => selectedSlide(state.idx - 1, e)}>Prev</PrevBtn>
-              <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
-              <NextBtn onClick={e => selectedSlide(state.idx + 1, e)}>Next</NextBtn>
+              <ModalBottomGrid>
+                <Btn onClick={e => selectedSlide(state.idx - 1, e)}>Prev</Btn>
+                <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
+                <Btn style={{ justifySelf: 'end' }} onClick={e => selectedSlide(state.idx + 1, e)}>Next</Btn>
+              </ModalBottomGrid>
             </OuterModal>
           </Background>
         </Modal>

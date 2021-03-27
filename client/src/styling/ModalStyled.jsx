@@ -41,11 +41,16 @@ export const ModalImage = styled.img`
   margin-bottom: -15px;
 `
 
-export const PrevBtn = styled.div`
+export const ModalBottomGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`
+
+export const Btn = styled.div`
   color: #54a5d4;
   background-color: #46708a;
   font-size: 15px;
-  padding: 0px 15px;
+  padding: 5px 15px;
   border-radius: 1.5px;
   width: 32px;
   margin-top: 8px;
@@ -57,26 +62,25 @@ export const PrevBtn = styled.div`
   }
 `
 
-export const NextBtn = styled.div`
-position: relative;
-  float: right;
-  color: #54a5d4;
-  background-color: #46708a;
-  font-size: 15px;
-  padding: 0px 15px;
-  border-radius: 1.5px;
-  margin-top: -19px;
-
-  &:hover {
-    cursor: pointer;
-    color: white;
-    background-color: #63a0c5;
-  }
-`
 
 export const ScreenShots = styled.div`
   color: white;
   font-size: 11.5px;
   text-align: center;
-  margin-top: -12px; // 18
+  margin-top: 12px; // 18
   `
+
+// export const NextBtn = styled.div`
+//   color: #54a5d4;
+//   background-color: #46708a;
+//   font-size: 15px;
+//   padding: 0px 15px;
+//   border-radius: 1.5px;
+
+
+//   &:hover {
+//     cursor: pointer;
+//     color: white;
+//     background-color: #63a0c5;
+//   }
+// `
