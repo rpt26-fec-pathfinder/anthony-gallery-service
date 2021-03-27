@@ -4,6 +4,10 @@ import styled from 'styled-components';
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: 11% 9% 10% 7% 10% 53%;
+
+  @media (min-width: 1675px) {
+    margin-right: -3px;
+  }
 `
 
 export const Input = styled.input`
@@ -56,5 +60,6 @@ export const Select = styled.a`
 export const SearchBar = styled.span`
   margin-right: 175px;
   background-color: #3f7da1;
+
 `
 
