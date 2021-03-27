@@ -25,7 +25,7 @@
 > 2) connect to mongo with your MONGO_URI (db-models/database.js; example: 'mongodb://localhost/steam') & npm run seed.
 > 3) npm run build.
 > 4) npm run start.
-> 5) Everything should be working ...I'm hoping it does 😬 !
+> 5) Everything should be working 😬 !
 
 ## Requirements
 
