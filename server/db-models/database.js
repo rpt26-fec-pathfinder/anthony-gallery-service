@@ -6,7 +6,9 @@ dotenv.config({ path: 'config/config.env' });
 
 
 // mongoose connection
-mongoose.connect('mongodb://localhost/steam', {
+// 'mongodb://localhost/steam'
+// 'mongodb://server:27017/steam'
+mongoose.connect('mongodb://server:27017/steam', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
