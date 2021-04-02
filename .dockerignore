@@ -6,3 +6,4 @@ config
 *.sh
 .dockerignore
 .gitignore
+README.md
