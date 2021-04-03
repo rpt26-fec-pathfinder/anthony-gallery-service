@@ -145,13 +145,13 @@ const Gallery = () => {
       <Wrapper>
         <NavBar />
         <Categories />
-        <Title>{state.title}</Title>
-        <HubButton />
+        <Title data-test="title">{state.title}</Title>
+        <HubButton data-test="hub" />
         <br />
 
         {/* MAIN IMAGES */}
         <Container>
-          {<Main >
+          {<Main data-test="main">
             <LazyLoad height={350}>
               <motion.img
                 onClick={() => OpenModel()}
@@ -161,13 +161,13 @@ const Gallery = () => {
                 initial={{ opacity: 0.5 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                style={{ width: '54.5%', minHeight: '350px' }} // 52.5 before?!
+                style={{ width: '54.5%', minHeight: '350px' }}
                 alt="main image" />
             </LazyLoad>
           </Main>}
 
           {/* MODAL */}
-          <Modal open={state.isModal} close={() => OpenModel()} >
+          <Modal data-test="modal" open={state.isModal} close={() => OpenModel()} >
             <Background>
               <OuterModal onClick={e => e.stopPropagation()}>
                 <Download>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></Download>
@@ -179,16 +179,16 @@ const Gallery = () => {
 
                 {/* NAVIGATION / How Many Message */}
                 <ModalBottomGrid>
-                  <Btn onClick={e => selectedSlide(state.idx - 1, e)}>Prev</Btn>
+                  <Btn data-test="button" onClick={e => selectedSlide(state.idx - 1, e)}>Prev</Btn>
                   <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
-                  <Btn style={{ justifySelf: 'end' }} onClick={e => selectedSlide(state.idx + 1, e)}>Next</Btn>
+                  <Btn data-test="button" style={{ justifySelf: 'end' }} onClick={e => selectedSlide(state.idx + 1, e)}>Next</Btn>
                 </ModalBottomGrid>
               </OuterModal>
             </Background>
           </Modal>
 
           {/* THUMBNAIL IMAGES */}
-          <Row id="row">
+          <Row id="row" data-test="thumbs">
             {state.thumb.map((image, index) => {
               if (index === 0) {
                 return <Col key={index} >
