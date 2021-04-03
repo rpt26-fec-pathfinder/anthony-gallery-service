@@ -1,4 +1,5 @@
-const app = require('../server/app');
+jest.useFakeTimers()
+const app = require('../app');
 const supertest = require("supertest");
 const request = supertest(app);
 
