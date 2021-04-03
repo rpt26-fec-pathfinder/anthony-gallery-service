@@ -141,68 +141,70 @@ const Gallery = () => {
   }
 
   return (
-    <Wrapper>
-      <NavBar />
-      <Categories />
-      <Title>{state.title}</Title>
-      <HubButton />
-      <br />
+    <div data-test="component-app">
+      <Wrapper>
+        <NavBar />
+        <Categories />
+        <Title>{state.title}</Title>
+        <HubButton />
+        <br />
 
-      {/* MAIN IMAGES */}
-      <Container>
-        {<Main >
-          <LazyLoad height={350}>
-            <motion.img
-              onClick={() => OpenModel()}
-              id="mainImage"
-              src={state.main[state.idx]}
-              key={state.main[state.idx]}
-              initial={{ opacity: 0.5 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              style={{ width: '54.5%', minHeight: '350px' }} // 52.5 before?!
-              alt="main image" />
-          </LazyLoad>
-        </Main>}
+        {/* MAIN IMAGES */}
+        <Container>
+          {<Main >
+            <LazyLoad height={350}>
+              <motion.img
+                onClick={() => OpenModel()}
+                id="mainImage"
+                src={state.main[state.idx]}
+                key={state.main[state.idx]}
+                initial={{ opacity: 0.5 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                style={{ width: '54.5%', minHeight: '350px' }} // 52.5 before?!
+                alt="main image" />
+            </LazyLoad>
+          </Main>}
 
-        {/* MODAL */}
-        <Modal open={state.isModal} close={() => OpenModel()} >
-          <Background>
-            <OuterModal onClick={e => e.stopPropagation()}>
-              <Download>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></Download>
+          {/* MODAL */}
+          <Modal open={state.isModal} close={() => OpenModel()} >
+            <Background>
+              <OuterModal onClick={e => e.stopPropagation()}>
+                <Download>&nbsp;&nbsp;&nbsp;Download full-size version&nbsp;&nbsp;<BsDownload style={{ verticalAlign: 'middle' }} /></Download>
 
-              {/* Modal Image */}
-              <ModalImage src={state.main[state.idx]} alt="main image" />
-              <br />
-              <br />
+                {/* Modal Image */}
+                <ModalImage src={state.main[state.idx]} alt="main image" />
+                <br />
+                <br />
 
-              {/* NAVIGATION / How Many Message */}
-              <ModalBottomGrid>
-                <Btn onClick={e => selectedSlide(state.idx - 1, e)}>Prev</Btn>
-                <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
-                <Btn style={{ justifySelf: 'end' }} onClick={e => selectedSlide(state.idx + 1, e)}>Next</Btn>
-              </ModalBottomGrid>
-            </OuterModal>
-          </Background>
-        </Modal>
+                {/* NAVIGATION / How Many Message */}
+                <ModalBottomGrid>
+                  <Btn onClick={e => selectedSlide(state.idx - 1, e)}>Prev</Btn>
+                  <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
+                  <Btn style={{ justifySelf: 'end' }} onClick={e => selectedSlide(state.idx + 1, e)}>Next</Btn>
+                </ModalBottomGrid>
+              </OuterModal>
+            </Background>
+          </Modal>
 
-        {/* THUMBNAIL IMAGES */}
-        <Row id="row">
-          {state.thumb.map((image, index) => {
-            if (index === 0) {
-              return <Col key={index} >
-                <ThumbImg className="thumb active" onClick={e => selectedSlide(index, e)} src={image} alt="thumb image" />
-              </Col>
-            } else {
-              return <Col key={index} >
-                <ThumbImg className="thumb" onClick={e => selectedSlide(index, e)} src={image} alt="thumb image" />
-              </Col>
-            }
-          })}
-        </Row>
-      </Container>
-      <SignIn />
-    </Wrapper >
+          {/* THUMBNAIL IMAGES */}
+          <Row id="row">
+            {state.thumb.map((image, index) => {
+              if (index === 0) {
+                return <Col key={index} >
+                  <ThumbImg className="thumb active" onClick={e => selectedSlide(index, e)} src={image} alt="thumb image" />
+                </Col>
+              } else {
+                return <Col key={index} >
+                  <ThumbImg className="thumb" onClick={e => selectedSlide(index, e)} src={image} alt="thumb image" />
+                </Col>
+              }
+            })}
+          </Row>
+        </Container>
+        <SignIn />
+      </Wrapper >
+    </div>
   );
 };
 
