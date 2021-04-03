@@ -1,7 +1,6 @@
 jest.useFakeTimers();
 const mongoose = require('mongoose');
 const { generateData } = require('../seed/seedingScript');
-// const path = require('path');
 
 // connect to mongo prior to tests
 beforeAll(async () => {
