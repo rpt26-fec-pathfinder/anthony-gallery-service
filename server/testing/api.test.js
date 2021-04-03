@@ -1,7 +1,7 @@
-const app = require('../server/app');
+jest.useFakeTimers()
+const app = require('../app');
 const supertest = require("supertest");
 const request = supertest(app);
-
 
 
 describe('GET REQUEST FOR images from page ranging 1 through 100!!!!!!', () => {

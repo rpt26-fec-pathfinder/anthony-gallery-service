@@ -4,7 +4,6 @@ const { getGallery } = require('../controllers/controller');
 const path = require('path');
 
 
-
 // get main galleryimages
 router.get('/images/:page', getGallery);
 

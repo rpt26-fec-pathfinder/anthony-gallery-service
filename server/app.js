@@ -10,9 +10,7 @@ app.use(cors());
 // shows static files react index.html
 app.use(express.static(path.join(__dirname, '../public')));
 
-
 // middleware for data sent to database
-// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // routes

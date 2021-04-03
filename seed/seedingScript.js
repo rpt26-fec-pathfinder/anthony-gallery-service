@@ -79,7 +79,7 @@ const createJSONData = function (data) {
     if (err) {
       throw err;
     }
-    console.log('data json file has been created!');
+    // console.log('data json file has been created!');
 
     for (let item of data) {
       Image.findOne({ page: item.page }, (err, page) => {
