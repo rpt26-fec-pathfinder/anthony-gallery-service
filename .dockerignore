@@ -7,3 +7,4 @@ config
 .dockerignore
 .gitignore
 README.md
+STYLE-GUIDE.md
