@@ -19,7 +19,8 @@
     "seed-aws": "node seed/awsS3",
     "test-front": "jest ./client/src/testing",
     "test-back": "jest --detectOpenHandles ./server/testing",
-    "start": "node ./server/server",
+    "start": "NODE_ENV=development node ./server/server",
+    "start-docker": "node ./server/server",
     "build": "webpack --mode development",
     "react-dev": "webpack serve --mode development --open --hot",
     "server-dev": "nodemon ./server/server"
