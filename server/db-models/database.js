@@ -14,7 +14,7 @@ mongoose.connect(MONGO_URI, {
   useCreateIndex: true,
   useFindAndModify: false
 })
-  .then(() => console.log(`Mongo Connected to ${MONGO_URI} 👍!`))
+  .then(() => console.log(`Mongo Connected 👍!`))
   .catch(() => console.error('ERROR, Mongo NOT Connected 👎!'));
 
 
