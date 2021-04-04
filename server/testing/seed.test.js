@@ -13,6 +13,11 @@ beforeAll(async () => {
     })
 })
 
+afterAll(() => {
+  mongoose.connection.close();
+});
+
+
 // tests
 describe('Seeding Script Test to ensure data contains 100 items!!!', () => {
   const data = generateData();

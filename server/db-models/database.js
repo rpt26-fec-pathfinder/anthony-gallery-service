@@ -6,16 +6,16 @@ dotenv.config({ path: 'config/config.env' });
 
 
 // mongoose connection
-// 'mongodb://localhost/steam'
-// 'mongodb://server:27017/steam'
-mongoose.connect('mongodb://localhost/steam', {
+const MONGO_URI = 'mongodb://server:27017/steam';
+// const MONGO_URI = 'mongodb://localhost/steam';
+mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
 })
-  .then(() => console.log('Mongo Connected!'))
-  .catch(() => console.error('Error, Mongo is NOT Connected!!'));
+  .then(() => console.log(`Mongo Connected 👍!`))
+  .catch(() => console.error('ERROR, Mongo NOT Connected 👎!'));
 
 
 // schema/model for mongo.
