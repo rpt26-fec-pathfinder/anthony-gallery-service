@@ -16,6 +16,7 @@
   },
   "scripts": {
     "seed": "NODE_ENV=development node seed/seedingScript",
+    "seed-docker": "node seed/seedingScript",
     "seed-aws": "node seed/awsS3",
     "test-front": "jest ./client/src/testing",
     "test-back": "jest --detectOpenHandles ./server/testing",
