@@ -2,7 +2,7 @@ node_modules
 npm-debug.log
 config
 .git
-*.pem
+**.pem
 *.sh
 .dockerignore
 .gitignore

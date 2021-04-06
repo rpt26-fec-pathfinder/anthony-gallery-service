@@ -1,10 +1,9 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Gallery from '../components/Gallery.jsx'
 
 Enzyme.configure({ adapter: new Adapter() });
-
 
 
 const setup = () => shallow(<Gallery />)
@@ -48,8 +47,16 @@ test('contains a modal', () => {
 
 test('contains 2 buttons for decrement and increment', () => {
   const wrapper = setup();
-  const button = findByTestAtrr(wrapper, 'button');
-  expect(button.length).toBe(2);
+  const decBtn = findByTestAtrr(wrapper, 'decrement button');
+  const incBtn = findByTestAtrr(wrapper, 'increment button');
+  expect(decBtn.text()).toBe('Prev');
+  expect(incBtn.text()).toBe('Next');
+  expect(decBtn.length).toBe(1);
+  expect(incBtn.length).toBe(1);
 })
 
-
+test('message starts at 1', () => {
+  const wrapper = setup();
+  const message = findByTestAtrr(wrapper, 'message').text();
+  expect(message).toBe('1 of 0 screenshots');
+})

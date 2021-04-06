@@ -179,9 +179,9 @@ const Gallery = () => {
 
                 {/* NAVIGATION / How Many Message */}
                 <ModalBottomGrid>
-                  <Btn data-test="button" onClick={e => selectedSlide(state.idx - 1, e)}>Prev</Btn>
-                  <ScreenShots >{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
-                  <Btn data-test="button" style={{ justifySelf: 'end' }} onClick={e => selectedSlide(state.idx + 1, e)}>Next</Btn>
+                  <Btn data-test="decrement button" onClick={e => selectedSlide(state.idx - 1, e)}>Prev</Btn>
+                  <ScreenShots data-test="message">{state.idx + 1} of {state.main.length} screenshots</ScreenShots>
+                  <Btn data-test="increment button" style={{ justifySelf: 'end' }} onClick={e => selectedSlide(state.idx + 1, e)}>Next</Btn>
                 </ModalBottomGrid>
               </OuterModal>
             </Background>
