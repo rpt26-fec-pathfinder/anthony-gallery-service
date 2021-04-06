@@ -60,4 +60,3 @@ test('message starts at 1', () => {
   const message = findByTestAtrr(wrapper, 'message').text();
   expect(message).toBe('1 of 0 screenshots');
 })
-
