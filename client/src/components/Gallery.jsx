@@ -209,6 +209,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
-// TODO
-// -responsive page layout in widescreen header footer image gallery
