@@ -13,6 +13,7 @@ services:
     build: .
     ports:
       - 4012:4012
+    restart: always
     volumes:
       - /usr/src/app/node_modules
     depends_on:
