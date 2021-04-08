@@ -16,6 +16,7 @@ services:
     restart: always
     volumes:
       - /usr/src/app/node_modules
+      - './data:/data/db'
     depends_on:
       - server
     stdin_open: true
