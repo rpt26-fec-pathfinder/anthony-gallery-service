@@ -6,8 +6,6 @@ name: Photo Gallery Service Tests
 on:
   push:
     branches: [ feature ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
