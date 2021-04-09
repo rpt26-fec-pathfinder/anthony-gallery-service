@@ -1,24 +1,23 @@
 version: '3'
 
 services:
-  server:
-    image: mongo:latest
-    restart: always
-    volumes:
-      - /usr/src/app/node_modules
-    ports:
-      - 27017:27017
-
   client:
     build: .
     ports:
       - 4012:4012
     restart: always
-    volumes:
-      - /usr/src/app/node_modules
-      - './data:/data/db'
     depends_on:
       - server
     stdin_open: true
     tty: true
 
+  server:
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - 27017:27017
+
+  volumes:
+    mongo-data:

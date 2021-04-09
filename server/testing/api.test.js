@@ -18,7 +18,7 @@ describe('GET REQUEST FOR images from page ranging 1 through 100!!!!!!', () => {
     expect(Array.isArray(moreLikeThisImages)).toBe(true);
 
     done();
-  });
+  }, 120000);
 });
 
 describe('GET REQUEST from pages less than greater than 100 do NOT exist!!!', () => {
@@ -30,5 +30,5 @@ describe('GET REQUEST from pages less than greater than 100 do NOT exist!!!', ()
     expect(res.status).toBe(404);
 
     done();
-  });
+  }, 120000);
 });
