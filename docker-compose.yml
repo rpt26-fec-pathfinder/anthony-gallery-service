@@ -2,6 +2,7 @@ version: '3'
 
 services:
   client:
+    container_name: photo-gallery-service
     build: .
     ports:
       - 4012:4012
@@ -12,6 +13,7 @@ services:
     tty: true
 
   server:
+    container_name: mongodb
     image: mongo:latest
     restart: always
     volumes:
