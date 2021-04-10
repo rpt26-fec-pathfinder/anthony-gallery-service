@@ -10,7 +10,7 @@ import StopTimer from '../helpers/stopTimer.jsx';
 
 // stylings
 import '../styling/Gallery.css'
-import { Title, ThumbImg, Wrapper, Main, Container, Row, Col } from '../styling/GalleryStyled.jsx';
+import { Grid, Title, ThumbImg, Wrapper, Main, Container, Row, Col } from '../styling/GalleryStyled.jsx';
 import { Background, OuterModal, Download, ModalImage, ScreenShots, ModalBottomGrid, Btn } from '../styling/ModalStyled.jsx'
 
 // npm installed packages
@@ -22,7 +22,7 @@ import { BsDownload } from "react-icons/bs";
 
 const Gallery = () => {
   const [state, setState] = useState({
-    title: '',
+    title: 'Age of Empires II: Definitive Edition',
     main: [],
     thumb: [],
     idx: 0,
@@ -140,8 +140,10 @@ const Gallery = () => {
       <Wrapper>
         <NavBar />
         <Categories />
-        <Title data-test="title">{state.title}</Title>
-        <HubButton data-test="hub" />
+        <Grid>
+          <Title data-test="title">{state.title}</Title>
+          <HubButton data-test="hub" />
+        </Grid>
         <br />
 
         {/* MAIN IMAGES */}
@@ -199,7 +201,7 @@ const Gallery = () => {
         </Container>
         <SignIn />
       </Wrapper >
-    </div>
+    </div >
   );
 };
 
