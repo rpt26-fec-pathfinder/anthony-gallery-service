@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 
 export const Title = styled.h1`
-  position: absolute;
   font-size: 26px;
   color: white;
   text-decoration: none;
@@ -51,5 +50,9 @@ export const Col = styled.div`
   float: left;
   width: 120px;
   padding: 2px;
-  /* margin-bottom: 1px; */
+`
+
+export const Grid = styled.div`
+   display: grid;
+   grid-template-columns: 1fr 1fr;
 `
