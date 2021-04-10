@@ -8,3 +8,4 @@ config
 .gitignore
 README.md
 STYLE-GUIDE.md
+mongo-init.js
