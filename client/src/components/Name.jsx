@@ -7,11 +7,15 @@ const Name = () => {
   const [title, setTitle] = useState('');
 
   useEffect(async () => {
-    const metaRes = await axios.get(`/api/product${window.location.pathname}`);
+    try {
+      const metaRes = await axios.get(`/api/product${window.location.pathname}`);
 
-    metaRes.data.message
-      ? await setTitle('404 Error, title not found!')
-      : await setTitle(metaRes.data.name);
+      metaRes.data.message
+        ? await setTitle('404 Error, title not found!')
+        : await setTitle(metaRes.data.name);
+    } catch (err) {
+      console.error(err)
+    }
   }, [])
 
   return (
