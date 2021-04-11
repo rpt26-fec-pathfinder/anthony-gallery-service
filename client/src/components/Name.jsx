@@ -1,0 +1,22 @@
+import React, { useState, useEffect } from 'react';
+import { Title } from '../styling/NameStyled.jsx';
+
+import axios from 'axios';
+
+const Name = () => {
+  const [title, setTitle] = useState('');
+
+  useEffect(async () => {
+    const metaRes = await axios.get(`/api/product${window.location.pathname}`);
+
+    metaRes.data.message
+      ? await setTitle('404 Error, title not found!')
+      : await setTitle(metaRes.data.name);
+  }, [])
+
+  return (
+    <Title>{title}</Title>
+  )
+}
+
+export default Name;
