@@ -22,7 +22,7 @@ import { BsDownload } from "react-icons/bs";
 
 const Gallery = () => {
   const [state, setState] = useState({
-    title: 'Age of Empires II: Definitive Edition',
+    title: '',
     main: [],
     thumb: [],
     idx: 0,
@@ -32,9 +32,10 @@ const Gallery = () => {
 
   useEffect(async () => {
     const imageRes = await axios.get(`/images${window.location.pathname}`);
+    let main = imageRes.data[0].mainImages.map(item => item.main);
+    let thumb = imageRes.data[0].mainImages.map(item => item.thumb);
+
     const metaRes = await axios.get(`/api/product${window.location.pathname}`);
-    let main = imageRes.data[0].mainImages.map(item => item.main)
-    let thumb = imageRes.data[0].mainImages.map(item => item.thumb)
 
     await setState({
       ...state,
