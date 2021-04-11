@@ -15,12 +15,6 @@ test('gallery app renders', () => {
   expect(appComponent.length).toBe(1);
 })
 
-test('contains 1 title', () => {
-  const wrapper = setup();
-  const title = findByTestAtrr(wrapper, 'title');
-  expect(title.length).toBe(1);
-})
-
 test('contains hub community button', () => {
   const wrapper = setup();
   const hub = findByTestAtrr(wrapper, 'hub');

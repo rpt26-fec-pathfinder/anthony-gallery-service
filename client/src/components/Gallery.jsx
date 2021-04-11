@@ -5,12 +5,13 @@ import NavBar from './NavBar.jsx';
 import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
+import Name from './Name.jsx';
 import Modal from './Modal.jsx'
 import StopTimer from '../helpers/stopTimer.jsx';
 
 // stylings
 import '../styling/Gallery.css'
-import { Grid, Title, ThumbImg, Wrapper, Main, Container, Row, Col } from '../styling/GalleryStyled.jsx';
+import { Grid, ThumbImg, Wrapper, Main, Container, Row, Col } from '../styling/GalleryStyled.jsx';
 import { Background, OuterModal, Download, ModalImage, ScreenShots, ModalBottomGrid, Btn } from '../styling/ModalStyled.jsx'
 
 // npm installed packages
@@ -22,7 +23,6 @@ import { BsDownload } from "react-icons/bs";
 
 const Gallery = () => {
   const [state, setState] = useState({
-    title: '',
     main: [],
     thumb: [],
     idx: 0,
@@ -35,11 +35,8 @@ const Gallery = () => {
     let main = imageRes.data[0].mainImages.map(item => item.main);
     let thumb = imageRes.data[0].mainImages.map(item => item.thumb);
 
-    const metaRes = await axios.get(`/api/product${window.location.pathname}`);
-
     await setState({
       ...state,
-      title: metaRes.data.name,
       main,
       thumb,
     })
@@ -142,7 +139,7 @@ const Gallery = () => {
         <NavBar />
         <Categories />
         <Grid>
-          <Title data-test="title">{state.title}</Title>
+          <Name data-test="title" />
           <HubButton data-test="hub" />
         </Grid>
         <br />
