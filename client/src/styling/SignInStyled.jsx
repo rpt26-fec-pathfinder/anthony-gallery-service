@@ -10,6 +10,10 @@ export const Paragraph = styled.p`
 export const Sign = styled.span`
   color: white;
   font-size: 11.5px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const Message = styled.span`

@@ -4,15 +4,21 @@ import { AllCategories, Category } from '../styling/CategoriesStyled.jsx'
 
 
 const Categories = () => {
-  const [category, setCategory] = useState('')
-
   return (
     <AllCategories >
       <br />
-      <Category href="">All Games<span>&nbsp;&nbsp;>&nbsp;&nbsp;</span></Category>
-      <Category href="">Strategy Games<span>&nbsp;&nbsp;>&nbsp;&nbsp;</span></Category>
-      <Category href="">Age of Empires Franchise Franchise<span>&nbsp;&nbsp;>&nbsp;&nbsp;</span></Category>
-      <Category href="">Age of Empires II: Definitive Edition</Category>
+      <Category href="#">
+        {window.location.pathname === '/1' ? 'All Games' : null}<span>&nbsp;&nbsp;{window.location.pathname === '/1' ? '>' : null}&nbsp;&nbsp;</span>
+      </Category>
+      < Category href="#">
+        {window.location.pathname === '/1' ? 'Strategy Games' : null}<span>&nbsp;&nbsp;{window.location.pathname === '/1' ? '>' : null}&nbsp;&nbsp;</span>
+      </Category>
+      <Category href="#">
+        {window.location.pathname === '/1' ? 'Age of Empires Franchise Franchise' : null}<span>&nbsp;&nbsp;{window.location.pathname === '/1' ? '>' : null}&nbsp;&nbsp;</span>
+      </Category>
+      <Category href="#">
+        {window.location.pathname === '/1' ? 'Age of Empires II: Definitive Edition' : null}
+      </Category>
       <br />
     </AllCategories >
   )
