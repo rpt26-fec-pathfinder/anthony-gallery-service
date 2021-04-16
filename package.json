@@ -22,7 +22,7 @@
     "test-back": "jest --detectOpenHandles --forceExit ./server/testing",
     "start": "NODE_ENV=development nodemon ./server/server",
     "start-docker": "node ./server/server",
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
     "react-dev": "webpack serve --mode development --open --hot",
     "server-dev": "nodemon ./server/server"
   },
