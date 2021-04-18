@@ -67,20 +67,5 @@ export const ScreenShots = styled.div`
   color: white;
   font-size: 11.5px;
   text-align: center;
-  margin-top: 12px; // 18
+  margin-top: 12px;
   `
-
-// export const NextBtn = styled.div`
-//   color: #54a5d4;
-//   background-color: #46708a;
-//   font-size: 15px;
-//   padding: 0px 15px;
-//   border-radius: 1.5px;
-
-
-//   &:hover {
-//     cursor: pointer;
-//     color: white;
-//     background-color: #63a0c5;
-//   }
-// `
