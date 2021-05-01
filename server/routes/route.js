@@ -1,8 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const { getGallery, getMeta } = require('../controllers/controller');
+const { createGallery, updateGallery, getGallery, getMeta } = require('../controllers/controller');
 const path = require('path');
 
+// create gallery
+router.put('/createGallery', (req, res) => {
+  createGallery(req.body)
+    .then(success => res.status(201).end())
+    .catch(err => res.send(err));
+});
+
+// update galleryImage
+router.put('/updateGallery/:page', (req, res) => {
+  console.log('updating a gallery')
+  console.log(req.body);
+  updateGallery(req.params.page, req.body)
+    .then(success => res.status(201).end())
+    .catch((err) => {
+      console.log('ran into an error')
+      res.send(err)
+    });
+});
 
 // get main galleryimages
 router.get('/images/:page', getGallery);
