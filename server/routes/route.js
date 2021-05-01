@@ -12,12 +12,10 @@ router.put('/createGallery', (req, res) => {
 
 // update galleryImage
 router.put('/updateGallery/:page', (req, res) => {
-  console.log('updating a gallery')
-  console.log(req.body);
   updateGallery(req.params.page, req.body)
     .then(success => res.status(201).end())
     .catch((err) => {
-      console.log('ran into an error')
+      console.log('could not update the record')
       res.send(err)
     });
 });

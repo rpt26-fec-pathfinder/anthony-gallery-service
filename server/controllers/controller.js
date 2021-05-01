@@ -22,16 +22,14 @@ exports.createGallery = async ({ headerImage, mainImages, moreLikeThisImages }) 
 }
 
 exports.updateGallery = (page, { headerImage, mainImages, moreLikeThisImages }) => {
-  console.log(typeof page);
-  console.log(headerImage);
   const filter = {
-    page: '101'
+    page
   }
   const update = {
-    page: '101',
+    page,
     headerImage: headerImage,
-    mainImages: mainImages,
-    moreLikeThisImages: moreLikeThisImages
+    mainImages: JSON.parse(mainImages),
+    moreLikeThisImages: JSON.parse(moreLikeThisImages)
   };
   return Model.findOneAndUpdate(filter, update);
 }
