@@ -18,7 +18,7 @@ exports.createGallery = async ({ headerImage, mainImages, moreLikeThisImages }) 
     mainImages: JSON.parse(mainImages),
     moreLikeThisImages: JSON.parse(moreLikeThisImages)
   }
-  return Model.create(gallery);
+  return await Model.create(gallery);
 }
 
 exports.updateGallery = (page, { headerImage, mainImages, moreLikeThisImages }) => {
@@ -48,6 +48,10 @@ exports.getGallery = (req, res) => {
       }
     }
   });
+};
+
+exports.deleteGallery = async (page) => {
+  return await Model.deleteOne({ page });
 };
 
 exports.getMeta = (req, res) => {
