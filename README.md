@@ -16,6 +16,7 @@
 
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
+1. [CRUD](#crud)
 1. [Development](#development)
 
 ## Usage
@@ -26,6 +27,11 @@
 > 3) npm run build.
 > 4) npm run start.
 > 5) Everything should be working 😬 !
+
+## CRUD API
+
+![CRUD API](https://www.websequencediagrams.com/files/render?link=PKouK46TUkhiMuRkKzoBMqXLl8Y5GPUYTEZmpWskahktODOdnKEVvu7IF49d5fow)
+
 
 ## Requirements
 
