@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, '../public')));
 
 // middleware for data sent to database
+app.use(express.urlencoded());
 app.use(express.json());
 
 // routes
