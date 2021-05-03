@@ -2,23 +2,20 @@ const Model = require('../db-models/database');
 const axios = require('axios');
 
 exports.createGallery = async ({ headerImage, mainImages, moreLikeThisImages }) => {
-  let count = await Model.countDocuments({}, function (err, count) {
-    if (err) {
-        console.log(err);
-    } else {
-        return count++;
+  try {
+    let count = await Model.countDocuments({});
+    count++;
+
+    const gallery = {
+      page: count.toString(),
+      headerImage: headerImage,
+      mainImages: JSON.parse(mainImages),
+      moreLikeThisImages: JSON.parse(moreLikeThisImages)
     }
-  });
-
-  count++;
-
-  const gallery = {
-    page: count.toString(),
-    headerImage: headerImage,
-    mainImages: JSON.parse(mainImages),
-    moreLikeThisImages: JSON.parse(moreLikeThisImages)
+    return await Model.create(gallery);
+  } catch (error) {
+    return error;
   }
-  return await Model.create(gallery);
 }
 
 exports.updateGallery = (page, { headerImage, mainImages, moreLikeThisImages }) => {
