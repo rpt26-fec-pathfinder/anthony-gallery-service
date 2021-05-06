@@ -3,3 +3,7 @@
 exports.randomPageSelector = () => {
   return Math.floor(Math.random() * (5) + 1);
 };
+
+exports.generateNumUpTo = (max) => {
+  return Math.floor(Math.random() * max + 1);
+}
