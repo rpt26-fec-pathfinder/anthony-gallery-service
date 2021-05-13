@@ -19,10 +19,10 @@ module.exports = class Page {
 
   setMainImages() {
     for (let i = 1; i <= generateNumUpTo(8); i++) {
-      this.mainImages.push({
+      this.mainImages.push(JSON.stringify({
         main: `https://steam-fec.s3.amazonaws.com/steam${this.randomPage}/main-${this.randomPage}-${i}.jpg`,
         thumb: `https://steam-fec.s3.amazonaws.com/steam${this.randomPage}/thumb-${this.randomPage}-${i}.jpg`
-      });
+      }));
     }
   }
 
