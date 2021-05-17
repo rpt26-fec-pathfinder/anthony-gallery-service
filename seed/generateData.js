@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const csvWriter = require('csv-write-stream');
-const writer = csvWriter();
+const writer = csvWriter({ separator: '\t' });
 const Page = require('./Page.js');
 const filePath = path.join(__dirname, '/data');
 
@@ -18,7 +18,7 @@ const start = Date.now();
 writer.pipe(fs.createWriteStream(filePath + '/pages.csv'));
 
 module.exports.generateCSV = async () => {
-  for (let i = 1; i < 1e7 ; i++) {
+  for (let i = 1; i <= 1e7 ; i++) {
     writer.write((new Page(i)));
 
     try {
@@ -38,7 +38,7 @@ module.exports.generateCSV = async () => {
 const stream = fs.createWriteStream(filePath + '/pages.json');
 
 module.exports.generateJSON = async () => {
-  for (let i = 1; i < 1e7; i++) {
+  for (let i = 1; i <= 1e7; i++) {
     if (!stream.write(JSON.stringify(new Page(i), null, 2) + '\n')) {
       await new Promise(resolve => stream.once('drain', resolve));
     }
