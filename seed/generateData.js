@@ -5,7 +5,7 @@ const timer = (record, start) => {
   if (record % 100000 === 0) {
     const now = Date.now();
     const minutesElapsed = (((now - start) / 1000) / 60);
-    console.log(`records left to create #${record} - minutes elapsed: ${minutesElapsed}`);
+    console.log(`created record #${record} - minutes elapsed: ${minutesElapsed}`);
   }
 }
 
