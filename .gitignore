@@ -31,3 +31,4 @@ login
 *.pem
 *.sh
 mongo-init.js
+*.json
