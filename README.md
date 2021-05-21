@@ -21,7 +21,7 @@
  
 ## Usage
 
-> Some usage instructions:
+Some usage instructions:
 ```
 > 1) npm install -g webpack & npm install dependencies.
 > 2) connect to mongo with your MONGO_URI (db-models/database.js; example: 'mongodb://localhost/steam') & npm run seed.
