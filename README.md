@@ -15,9 +15,10 @@
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
+2. [Requirements](#Requirements)
+3. [Development](#Development)
+4. [Images](#Images)
+ 
 ## Usage
 
 > Some usage instructions:
@@ -44,4 +45,8 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+## Images
+Top Navbar:
+![image](https://user-images.githubusercontent.com/31682285/119092668-908f3e00-b9c3-11eb-8e92-67745693163d.png)
 
+Top Navbar:
