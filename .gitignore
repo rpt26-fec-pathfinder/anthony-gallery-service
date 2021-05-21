@@ -31,4 +31,5 @@ login
 *.pem
 *.sh
 mongo-init.js
-*.json
+seed/data.json
+package-lock.json

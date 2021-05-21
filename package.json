@@ -1,0 +1,68 @@
+{
+  "name": "rpt26-fec-gallery",
+  "version": "",
+  "description": "Image Gallery for Stream",
+  "author": "Anthony Sim",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    },
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "seed": "NODE_ENV=development node seed/seedingScript",
+    "seed-docker": "node seed/seedingScript",
+    "seed-aws": "node seed/awsS3",
+    "test-front": "jest ./client/src/testing",
+    "test-back": "jest --detectOpenHandles --forceExit ./server/testing",
+    "start": "NODE_ENV=development nodemon ./server/server",
+    "start-docker": "node ./server/server",
+    "build": "webpack --mode production",
+    "react-dev": "webpack serve --mode development --open --hot",
+    "server-dev": "nodemon ./server/server"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs2": "^7.13.10",
+    "aws-sdk": "^2.857.0",
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "framer-motion": "^3.10.6",
+    "identity-obj-proxy": "^3.0.0",
+    "mongoose": "^5.11.15",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.2.0",
+    "react-lazyload": "^3.2.0",
+    "styled-components": "^5.2.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.8",
+    "@babel/preset-react": "^7.12.13",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.1.0",
+    "enzyme": "^3.11.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "html-webpack-plugin": "^5.2.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "supertest": "^6.1.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
