@@ -49,4 +49,17 @@ npm install
 Top Navbar:
 ![image](https://user-images.githubusercontent.com/31682285/119092668-908f3e00-b9c3-11eb-8e92-67745693163d.png)
 
-Top Navbar:
+Image Gallery:
+![image](https://user-images.githubusercontent.com/31682285/119092997-fed40080-b9c3-11eb-9adb-c47582275a23.png)
+
+Meta Data:
+![image](https://user-images.githubusercontent.com/31682285/119093027-072c3b80-b9c4-11eb-9c14-a8f8c71cdc25.png)
+
+More Like This:
+![image](https://user-images.githubusercontent.com/31682285/119093037-0b585900-b9c4-11eb-8fdf-db1a1f0d4e16.png)
+
+Reviews:
+![image](https://user-images.githubusercontent.com/31682285/119093055-10b5a380-b9c4-11eb-8882-0009ffea45e3.png)
+
+Footer:
+![image](https://user-images.githubusercontent.com/31682285/119093069-14492a80-b9c4-11eb-9289-db3fe175c47f.png)
