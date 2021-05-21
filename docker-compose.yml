@@ -11,6 +11,8 @@ services:
       - server
     stdin_open: true
     tty: true
+    logging:
+      driver: "none"
 
   server:
     container_name: mongodb
@@ -20,6 +22,8 @@ services:
       - mongo-data:/data/db
     ports:
       - 27017:27017
+    logging:
+      driver: "none"
 
 volumes:
   mongo-data:
