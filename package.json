@@ -51,6 +51,7 @@
     "@babel/preset-react": "^7.12.13",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "babel-loader": "^8.2.2",
+    "couchimport": "^1.5.2",
     "css-loader": "^5.1.0",
     "enzyme": "^3.11.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
