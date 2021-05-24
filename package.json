@@ -18,7 +18,7 @@
     "seed": "NODE_ENV=development node seed/seedingScript",
     "seed-docker": "node seed/seedingScript",
     "seed-aws": "node seed/awsS3",
-    "seed-couch": "cat seed/data/couch.csv | couchimport --url http://admin:cakescookies180@localhost:5984 --db images",
+    "seed-couch": "cat seed/data/couch.jsonl | couchimport --url http://admin:cakescookies180@localhost:5984 --db images --type jsonl",
     "test-front": "jest ./client/src/testing",
     "test-back": "jest --detectOpenHandles --forceExit ./server/testing",
     "start": "NODE_ENV=development nodemon ./server/server",
