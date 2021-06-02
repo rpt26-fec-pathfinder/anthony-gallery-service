@@ -65,3 +65,12 @@ module.exports.deleteGallery = runAsyncWrapper(async(req, res) => {
 
   res.json(result.data);
 });
+
+module.exports.getMeta = (req, res) => {
+  axios.get(`http://3.227.255.185/api/product/${req.params.page}`)
+    .then(response => {
+      // console.log(response.data)
+      res.json(response.data)
+    })
+    .catch(err => res.json({ message: 'error title not found!' }))
+}

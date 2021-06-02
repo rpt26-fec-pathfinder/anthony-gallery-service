@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getGallery, createGallery, updateGallery, deleteGallery } = require('../controllers/couch.js');
-const { getMeta } = require('../controllers/controller.js')
+const { getGallery, createGallery, updateGallery, deleteGallery, getMeta } = require('../controllers/couch.js');
 const path = require('path');
 
 // create gallery
