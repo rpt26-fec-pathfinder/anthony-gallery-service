@@ -20,8 +20,8 @@ module.exports.createCouchJSONRecord = (id) => {
     headerImage: `https://steam-fec.s3.amazonaws.com/steam${randomPage}/header-${randomPage}.jpg`,
     mainImages: [...new Array(8)].map((currentElement, index) => {
       return {
-        main: `https://steam-fec.s3.amazonaws.com/steam${randomPage}/main-${randomPage}-${index}.jpg`,
-        thumb: `https://steam-fec.s3.amazonaws.com/steam${randomPage}/thumb-${randomPage}-${index}.jpg`
+        main: `https://steam-fec.s3.amazonaws.com/steam${randomPage}/main-${randomPage}-${index + 1}.jpg`,
+        thumb: `https://steam-fec.s3.amazonaws.com/steam${randomPage}/thumb-${randomPage}-${index + 1}.jpg`
       }
     })
   }) + '\n'
