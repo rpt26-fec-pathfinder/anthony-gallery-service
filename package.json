@@ -18,14 +18,14 @@
     "seed": "NODE_ENV=development node seed/seedingScript",
     "seed-docker": "node seed/seedingScript",
     "seed-aws": "node seed/awsS3",
-    "seed-couch": "cat seed/data/couch.csv | couchimport --url http://admin:cakescookies180@localhost:5984 --db images",
+    "seed-couch": "cat seed/data/couch.jsonl | couchimport --url http://admin:cakescookies180@localhost:5984 --db images --type jsonl",
     "test-front": "jest ./client/src/testing",
     "test-back": "jest --detectOpenHandles --forceExit ./server/testing",
     "start": "NODE_ENV=development nodemon ./server/server",
     "start-docker": "node ./server/server",
     "build": "webpack --mode production",
-    "react-dev": "webpack serve --mode development --open --hot",
-    "server-dev": "nodemon ./server/server"
+    "react-dev": "webpack serve --mode development --hot",
+    "server-dev": "NODE_ENV=development nodemon ./server/server --unhandled-rejections=strict"
   },
   "dependencies": {
     "@babel/runtime-corejs2": "^7.13.10",

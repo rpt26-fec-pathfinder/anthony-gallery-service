@@ -32,3 +32,4 @@ login
 *.sh
 mongo-init.js
 seed/data/
+.env
