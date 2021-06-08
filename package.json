@@ -38,6 +38,7 @@
     "framer-motion": "^3.10.6",
     "identity-obj-proxy": "^3.0.0",
     "mongoose": "^5.11.15",
+    "newrelic": "^7.5.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
