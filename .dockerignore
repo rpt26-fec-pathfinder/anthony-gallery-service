@@ -9,3 +9,8 @@ config
 README.md
 STYLE-GUIDE.md
 mongo-init.js
+.env
+seed
+.vscode
+k6
+Dockerfile
