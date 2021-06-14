@@ -33,4 +33,3 @@ login
 mongo-init.js
 seed/data/
 .env
-newrelic.js
