@@ -4,7 +4,14 @@ const HOST = process.env.HOST || '127.0.0.1';
 const PORT = process.env.PORT || '5984';
 const userName = process.env.COUCH_USER;
 const password = process.env.COUCH_PASSWORD;
-const couchURL = `http://${userName}:${password}@${HOST}:${PORT}/images`;
+
+let couchURL;
+if (process.env.NODE_ENV === 'development') {
+  console.log('Connecting to the dev db')
+  couchURL = `http://${userName}:${password}@${HOST}:${PORT}/images`;
+} else {
+  couchURL = `http://${userName}:${password}@3.22.66.216/images`
+}
 
 const runAsyncWrapper = (callback) => {
   return function (req, res, next) {
