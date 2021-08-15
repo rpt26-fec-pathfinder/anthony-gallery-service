@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 // other components
 import NavBar from './NavBar.jsx';
-import HubButton from './HubButton.jsx';
+// import HubButton from './HubButton.jsx';
 import Categories from './Categories.jsx';
 import SignIn from './SignIn.jsx';
-import Name from './Name.jsx';
+// import Name from './Name.jsx';
 import Modal from './Modal.jsx'
 import StopTimer from '../helpers/stopTimer.jsx';
 
@@ -156,8 +156,8 @@ const Gallery = () => {
         <NavBar />
         <Categories />
         <Grid>
-          <Name />
-          <HubButton data-test="hub" />
+          {/* <Name /> */}
+          {/* <HubButton data-test="hub" /> */}
         </Grid>
         <br />
 

@@ -8,7 +8,7 @@ const path = require('path');
 router.get('/images/:page', getGallery);
 
 // get metaData from James
-router.get('/api/product/:page', getMeta);
+// router.get('/api/product/:page', getMeta);
 
 router.get('/:id', (req, res) => {
   res.sendFile(path.resolve('public/index.html'));
