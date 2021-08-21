@@ -17,8 +17,9 @@
 1. [Usage](#Usage)
 2. [Requirements](#Requirements)
 3. [Development](#Development)
-4. [Screenshots](#Screenshots)
- 
+4. [Web Sequence](#Web)
+5. [Screenshots](#Screenshots)
+
 ## Usage
 
 Some usage instructions:
@@ -47,6 +48,10 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+
+## Web Sequence
+![web-sequence-diagram](https://user-images.githubusercontent.com/31682285/130307002-16975432-3a3d-451c-b05f-39a4294ec14d.png)
+
 ## Screenshots
 Top Navbar:
 ![image](https://user-images.githubusercontent.com/31682285/119092668-908f3e00-b9c3-11eb-8e92-67745693163d.png)
