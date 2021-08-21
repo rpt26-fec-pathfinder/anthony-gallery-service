@@ -17,7 +17,7 @@
 1. [Usage](#Usage)
 2. [Requirements](#Requirements)
 3. [Development](#Development)
-4. [Web Sequence](#Web)
+4. [Sequence](#Sequence)
 5. [Screenshots](#Screenshots)
 
 ## Usage
