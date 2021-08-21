@@ -17,7 +17,7 @@
 1. [Usage](#Usage)
 2. [Requirements](#Requirements)
 3. [Development](#Development)
-4. [Sequence](#Sequence)
+4. [Web-Sequence](#Web-Sequence)
 5. [Screenshots](#Screenshots)
 
 ## Usage
@@ -49,7 +49,7 @@ npm install -g webpack
 npm install
 ```
 
-## Web Sequence
+## Web-Sequence
 ![web-sequence-diagram](https://user-images.githubusercontent.com/31682285/130307002-16975432-3a3d-451c-b05f-39a4294ec14d.png)
 
 ## Screenshots
